@@ -1,0 +1,1857 @@
+<!doctype html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ықылас Дүкенұлы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Onest:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: бір беттік «саяхат» — бес көрініс (view) кезекпен ашылады, ортақ элементтер (портрет, қобыз суреті) көріністер арасында ұшып ауысады. */
+:root{
+  --ink:#17120F;        /* қою қара-қоңыр */
+  --ink-2:#0F0C0A;
+  --wood:#69432E;       /* ағаш */
+  --gold:#C9A45B;       /* алтын */
+  --gold-hi:#E6C98A;
+  --green:#173D35;      /* қою жасыл */
+  --green-deep:#0E241F;
+  --cream:#F2EBDD;      /* жылы ақшыл */
+  --cream-2:rgba(242,235,221,.72);
+  --cream-3:rgba(242,235,221,.5);
+  --line:rgba(201,164,91,.28);
+  --line-2:rgba(201,164,91,.14);
+  --panel:rgba(23,18,15,.72);
+
+  --f-display:"Forum","Cormorant Garamond","Times New Roman",Georgia,serif;
+  --f-italic:"Cormorant Garamond","Times New Roman",Georgia,serif;
+  --f-body:"Onest","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+
+  --hdr:68px;
+  /* типографика шкаласы */
+  --fs-h2:clamp(2.6rem,5.2vw,4.4rem);
+  --fs-h3:clamp(1.9rem,3.2vw,2.7rem);
+  --fs-cap:.72rem;
+  --measure:62ch;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --gut:clamp(16px,5vw,72px);
+  --ease:cubic-bezier(.22,.7,.18,1);
+  --ease-io:cubic-bezier(.65,0,.35,1);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--ink);scroll-behavior:auto}
+body{
+  background:
+    radial-gradient(120% 80% at 80% -10%, rgba(105,67,46,.35), transparent 60%),
+    radial-gradient(90% 70% at -10% 110%, rgba(23,61,53,.45), transparent 60%),
+    var(--ink);
+  background-attachment:fixed;
+  color:var(--cream);
+  font-family:var(--f-body);
+  font-size:16px;line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;letter-spacing:.01em}
+p{margin:0}
+
+/* жеңіл текстура */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* ортақ элементтер */
+.eyebrow{font-family:var(--f-body);font-size:.75rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.8em}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor;opacity:.7}
+.lead{font-size:clamp(1.02rem,1.2vw,1.15rem);color:var(--cream-2);max-width:60ch}
+/* CTA — жұқа алтын жақтаумен қоршалған батырма */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:52px;padding:0 26px;border:1px solid var(--line);border-radius:2px;
+  background:rgba(15,12,10,.35);color:var(--cream);text-decoration:none;cursor:pointer;font-family:var(--f-body);font-size:.78rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  overflow:hidden;isolation:isolate;transition:color .4s var(--ease),border-color .4s var(--ease),box-shadow .6s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(201,164,91,.18),rgba(201,164,91,.06));transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease-out)}
+.btn:hover,.btn:focus-visible{border-color:var(--gold);color:var(--gold-hi);box-shadow:0 0 24px rgba(201,164,91,.18)}
+.btn:hover::before,.btn:focus-visible::before{transform:scaleX(1)}
+.btn svg{width:18px;height:18px;flex:none;transition:transform .7s var(--ease-out)}
+.btn:hover svg,.btn:focus-visible svg{transform:translateX(5px)}
+.btn.solid{border-color:var(--gold);color:var(--gold-hi);background:rgba(201,164,91,.08)}
+.btn:active{transform:translateY(1px)}
+/* тарау нөмірі */
+.ch-no{font-family:var(--f-display);font-size:1.05rem;letter-spacing:.04em;color:var(--gold-hi);text-transform:none}
+/* ою-өрнек бөлгіш */
+.orn{display:block;width:min(220px,60%);height:22px;color:var(--gold);opacity:.7}
+.orn path{fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round}
+/* витрина бұрыштары */
+.corners{position:absolute;pointer-events:none;--c:var(--line);--s:22px;
+  background:linear-gradient(var(--c),var(--c)) 0 0/var(--s) 1px,linear-gradient(var(--c),var(--c)) 0 0/1px var(--s),
+  linear-gradient(var(--c),var(--c)) 100% 0/var(--s) 1px,linear-gradient(var(--c),var(--c)) 100% 0/1px var(--s),
+  linear-gradient(var(--c),var(--c)) 0 100%/var(--s) 1px,linear-gradient(var(--c),var(--c)) 0 100%/1px var(--s),
+  linear-gradient(var(--c),var(--c)) 100% 100%/var(--s) 1px,linear-gradient(var(--c),var(--c)) 100% 100%/1px var(--s);background-repeat:no-repeat}
+.next-link{display:flex;justify-content:center;padding-block:clamp(48px,8vw,96px) clamp(56px,8vw,110px)}
+
+/* ===== Header ===== */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);
+  transition:background .5s var(--ease),border-color .5s var(--ease);border-bottom:1px solid transparent}
+.hdr.scrolled{background:rgba(15,12,10,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line-2)}
+.hdr-in{height:var(--hdr);display:flex;align-items:center;justify-content:space-between;gap:24px;padding-inline:var(--gut)}
+.brand{display:flex;align-items:center;gap:.7em;text-decoration:none;font-family:var(--f-display);font-size:1.15rem;letter-spacing:.06em;white-space:nowrap}
+.brand-mark{width:34px;height:34px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold);font-size:1.05rem}
+.nav{position:relative;display:flex;gap:4px}
+.nav a{position:relative;text-decoration:none;font-size:.86rem;padding:.55em .85em;color:var(--cream-2);transition:color .4s var(--ease);border-radius:2px;display:inline-flex;align-items:baseline;gap:.5em}
+.nav a i{font-style:normal;font-family:var(--f-display);font-size:.8rem;color:var(--gold);opacity:.55;transition:opacity .4s}
+.nav a:hover i,.nav a[aria-current="page"] i{opacity:1}
+.nav a:hover{color:var(--cream)}
+.nav a[aria-current="page"]{color:var(--gold-hi)}
+.nav-ink{position:absolute;bottom:2px;height:1px;background:var(--gold);transition:left .6s var(--ease),width .6s var(--ease);pointer-events:none}
+.burger{display:none;width:46px;height:46px;border:1px solid var(--line);border-radius:50%;background:transparent;cursor:pointer;place-items:center}
+.burger span{display:block;width:18px;height:1px;background:var(--cream);position:relative;transition:transform .4s var(--ease)}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:1px;background:var(--cream);transition:transform .4s var(--ease)}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.hdr.open .burger span{background:transparent}
+.hdr.open .burger span::before{transform:translateY(6px) rotate(45deg)}
+.hdr.open .burger span::after{transform:translateY(-6px) rotate(-45deg)}
+
+@media (max-width:900px){
+  .burger{display:grid}
+  .nav{position:fixed;top:calc(var(--hdr) + env(safe-area-inset-top,0px));left:0;right:0;flex-direction:column;gap:0;padding:12px var(--gut) 28px;
+    background:rgba(15,12,10,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-2);
+    transform:translateY(-12px);opacity:0;visibility:hidden;transition:opacity .35s var(--ease),transform .35s var(--ease),visibility 0s .35s}
+  .hdr.open .nav{transform:none;opacity:1;visibility:visible;transition:opacity .35s var(--ease),transform .35s var(--ease)}
+  .nav a{font-family:var(--f-display);font-size:1.5rem;padding:.55em 0;border-bottom:1px solid var(--line-2);color:var(--cream)}
+  .nav a[aria-current="page"]{color:var(--gold-hi)}
+  .nav-ink{display:none}
+}
+
+/* ===== Views ===== */
+main{position:relative;z-index:2}
+.view{position:relative;min-height:100svh}
+
+/* ===== HeroSection ===== */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end;min-height:100svh;padding-inline:var(--gut);gap:clamp(16px,4vw,64px);position:relative;overflow:hidden}
+.hero-dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero-text{align-self:center;padding-block:calc(var(--hdr) + 24px) 48px;display:grid;gap:clamp(16px,2.6svh,26px);position:relative;z-index:2;min-width:0}
+.hero-name{font-size:clamp(3rem,min(7.4vw,13svh),7.6rem);line-height:.9;letter-spacing:.02em;color:var(--cream);text-shadow:0 2px 40px rgba(15,12,10,.6)}
+.hero-name .ln{overflow:hidden;padding-bottom:.06em}
+.hero-name .ln{display:block;white-space:nowrap}
+.hero-name .ln + .ln{color:var(--gold)}
+.ch{display:inline-block}
+.view.play .ch{animation:chIn 1.3s var(--ease-out) both;animation-delay:calc(.6s + var(--i) * 60ms)}
+@keyframes chIn{from{opacity:0;transform:translateY(.9em) rotate(4deg);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+.hero-years{display:flex;align-items:baseline;gap:.6em;font-family:var(--f-display);font-size:clamp(1.4rem,2.4vw,2.1rem);color:var(--cream);font-variant-numeric:tabular-nums}
+.hero-years i{display:inline-block;width:56px;height:1px;background:var(--gold);transform:translateY(-.3em)}
+.hero-motto{font-family:var(--f-italic);font-style:italic;font-size:clamp(1.05rem,1.4vw,1.3rem);line-height:1.3;color:var(--gold-hi);max-width:34ch;margin-top:-8px}
+.author-note{margin:clamp(24px,4vw,48px) 0 0 56px;padding:6px 0 6px clamp(20px,3vw,36px);border-left:1px solid var(--gold);display:grid;gap:14px;max-width:var(--measure)}
+.author-note p:not(.eyebrow){font-family:var(--f-italic);font-style:italic;font-size:clamp(1.2rem,1.6vw,1.4rem);line-height:1.45;color:var(--cream)}
+@media (max-width:860px){.author-note{margin-left:0}}
+.mus-lead{color:var(--cream-2);max-width:62ch;font-size:clamp(.95rem,1.1vw,1.05rem)}
+.finale-title{font-family:var(--f-italic);font-style:italic;font-size:clamp(1.5rem,2.6vw,2.2rem);color:var(--gold-hi);line-height:1.2}
+.finale-p{color:var(--cream-2);max-width:60ch;font-size:1.05rem}
+.finale-sum{max-width:var(--measure);display:grid;gap:12px;justify-items:center;padding:26px 0;border-block:1px solid var(--line)}
+.finale-sum b{font-weight:500;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.finale-sum p{color:var(--cream);font-size:1.05rem}
+.hero-desc{font-family:var(--f-italic);font-style:italic;font-size:clamp(1.25rem,1.8vw,1.6rem);line-height:1.3;color:var(--cream);max-width:32ch}
+.hero-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 32px;margin:0;max-width:560px;padding-top:6px;border-top:1px solid var(--line-2)}
+.hero-facts dt{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:14px}
+.hero-facts dd{margin:4px 0 0;color:var(--cream-2);font-size:.95rem;line-height:1.45}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px 16px;padding-top:4px}
+.hero .fade-up{opacity:1}
+.view.play .hero-text .fade-up{animation:fadeUp 1.2s var(--ease) both;animation-delay:var(--d,0s)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%;z-index:0;background:var(--ink)}
+.hero-shade{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(23,18,15,.94) 0%,rgba(23,18,15,.8) 30%,rgba(23,18,15,.25) 55%,transparent 70%),linear-gradient(0deg,var(--ink) 0,transparent 22%),linear-gradient(180deg,rgba(15,12,10,.55) 0,transparent 18%)}
+.hero-dust{z-index:1}
+.hero.no-video .hero-shade{display:none}
+.portrait-img.hero-anchor{position:absolute;left:0;top:0;opacity:0;pointer-events:none;z-index:1;max-width:none;filter:none}
+.view.play .hero-video{animation:curtain 2.6s var(--ease-io) both .1s}
+@keyframes curtain{from{clip-path:inset(0 50% 0 50%);transform:scale(1.08);filter:brightness(.4)}60%{filter:brightness(.85)}to{clip-path:inset(0 0 0 0);transform:none;filter:none}}
+.hero .corners{inset:calc(var(--hdr) + 14px) var(--gut) 22px;z-index:1;opacity:0}
+.view.play .hero .corners{animation:fadeIn 1.6s var(--ease) both 1.8s;opacity:1}
+.hero-chapter{position:absolute;right:calc(max(16px,var(--gut)) + 66px);bottom:30px;z-index:2;font-size:var(--fs-cap);letter-spacing:.24em;text-transform:uppercase;color:var(--cream-3);display:flex;gap:12px;align-items:center}
+.hero-chapter b{font-family:var(--f-display);font-weight:400;font-size:1rem;letter-spacing:.04em;color:var(--gold-hi)}
+.view.play .hero-chapter{animation:fadeIn 1.2s var(--ease) both 2.4s}
+.hero-figure{position:relative;align-self:end;display:flex;justify-content:center;align-items:flex-end;min-width:0;z-index:1}
+.portrait-img{width:min(100%,720px,calc((100svh - var(--hdr) - 24px) * .83));height:auto;aspect-ratio:1063/1280;object-fit:contain;
+  -webkit-mask-image:linear-gradient(to bottom,#000 78%,transparent 100%);mask-image:linear-gradient(to bottom,#000 78%,transparent 100%);
+  filter:drop-shadow(0 0 26px rgba(230,201,138,.4)) drop-shadow(0 30px 60px rgba(0,0,0,.5));position:relative;z-index:2}
+.view.play .hero-figure .portrait-img{animation:portraitIn 2.2s var(--ease) both}
+@keyframes portraitIn{from{opacity:0;transform:scale(1.03)}to{opacity:1;transform:none}}
+.halo{position:absolute;left:50%;top:44%;width:min(110%,820px);aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none;z-index:0}
+.halo::before{content:"";position:absolute;inset:8%;border-radius:50%;
+  background:conic-gradient(from 0deg,transparent 0 12%,rgba(201,164,91,.38) 18%,transparent 30% 55%,rgba(230,201,138,.28) 64%,transparent 76% 100%);
+  filter:blur(38px);animation:spin 38s linear infinite}
+.halo::after{content:"";position:absolute;inset:14%;border-radius:50%;background:radial-gradient(circle,rgba(242,214,150,.55),rgba(201,164,91,.32) 30%,rgba(105,67,46,.16) 52%,transparent 70%);animation:breathe 7s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.85;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
+.halo .ring{position:absolute;inset:12%;border-radius:50%;border:1px solid var(--line-2)}
+.halo .ring + .ring{inset:4%;border-style:dashed;border-color:rgba(201,164,91,.1);animation:spin 120s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero.leaving .halo::after{animation:haloBoost .7s var(--ease) both}
+@keyframes haloBoost{to{transform:scale(1.25);opacity:1;filter:brightness(1.8)}}
+
+.img-missing{display:grid;place-items:center;text-align:center;padding:24px;border:1px dashed var(--line);border-radius:14px;
+  background:repeating-linear-gradient(135deg,rgba(201,164,91,.05) 0 12px,transparent 12px 24px);color:var(--cream-3);font-size:.85rem}
+.img-missing b{display:block;font-family:var(--f-display);font-weight:400;font-size:1.3rem;color:var(--cream-2);margin-bottom:6px}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;align-items:start;min-height:auto;padding-top:calc(var(--hdr) + 8px)}
+  .hero-figure{order:-1;align-self:start}
+  .hero-video{height:64svh;bottom:auto;object-position:71% 30%}
+  .hero-shade{background:linear-gradient(0deg,var(--ink) calc(100% - 64svh),rgba(23,18,15,.55) calc(100% - 50svh),transparent calc(100% - 30svh)),linear-gradient(180deg,rgba(15,12,10,.6) 0,transparent 16%)}
+  .hero .hero-text{padding-top:calc(54svh - var(--hdr))}
+  .hero .corners,.hero-chapter{display:none}
+  .portrait-img{width:min(82vw,calc(52svh * .83))}
+  .halo{top:50%}
+  .hero-text{padding-block:4px 64px;gap:22px}
+  .hero-facts{grid-template-columns:1fr}
+}
+
+/* ===== BiographySection ===== */
+.bio{--gap:clamp(36px,6vw,96px);display:grid;grid-template-columns:minmax(220px,340px) minmax(0,1fr);gap:var(--gap);max-width:1240px;margin:0 auto;
+  padding:calc(var(--hdr) + 56px) var(--gut) 0}
+.bio-aside{position:sticky;top:calc(var(--hdr) + 32px);align-self:start;display:grid;gap:24px}
+.bio-frame{position:relative;width:100%;aspect-ratio:1063/1280}
+.bio-frame::before{content:"";position:absolute;inset:-18% -20% -4%;background:radial-gradient(closest-side,rgba(242,214,150,.5),rgba(201,164,91,.26) 40%,transparent 78%);z-index:0;animation:breathe 7s ease-in-out infinite}
+.bio-frame .portrait-img{width:100%;position:relative;z-index:1}
+.bio-connector{position:absolute;top:46%;left:100%;width:calc(var(--gap) + 11px);height:1px;background:linear-gradient(90deg,rgba(201,164,91,.15),var(--gold));transform-origin:left;transform:scaleX(1);z-index:2}
+.bio-connector::after{content:"";position:absolute;right:-4px;top:-4px;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 18px 4px rgba(201,164,91,.6)}
+.bio-now{position:relative;height:3.6rem;overflow:hidden;border-bottom:1px solid var(--line-2)}
+.bio-now span{position:absolute;left:0;bottom:6px;font-family:var(--f-display);font-size:3rem;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums;white-space:nowrap;transition:transform .9s var(--ease-out),opacity .6s}
+.bio-now span.out{transform:translateY(-100%);opacity:0}
+.bio-now span.pre{transform:translateY(100%);opacity:0;transition:none}
+.bio-steps{list-style:none;margin:0;padding:0;display:grid;gap:2px;counter-reset:s}
+.bio-steps button{all:unset;cursor:pointer;display:flex;gap:12px;align-items:baseline;padding:6px 0;color:var(--cream-3);font-size:.9rem;transition:color .4s;width:100%}
+.bio-steps button span{font-family:var(--f-display);color:var(--line);font-variant-numeric:tabular-nums;min-width:3.2em;transition:color .4s}
+.bio-steps button:hover{color:var(--cream-2)}
+.bio-steps li.on button{color:var(--cream)}
+.bio-steps li.on button span{color:var(--gold)}
+.bio-steps button:focus-visible{outline:2px solid var(--gold-hi);outline-offset:2px}
+
+.bio-head{display:grid;gap:18px;padding-bottom:24px}
+.bio-head h2{font-size:var(--fs-h2);line-height:1}
+.tl{position:relative;padding-left:56px}
+.tl-track{position:absolute;left:11px;top:0;bottom:0;width:1px;background:var(--line-2);transform-origin:top}
+.tl-fill{position:absolute;inset:0;background:linear-gradient(var(--gold),var(--gold-hi));transform-origin:top;transform:scaleY(var(--p,0));box-shadow:0 0 12px rgba(201,164,91,.5)}
+.stage{position:relative;padding-block:clamp(48px,9vh,96px);display:grid;gap:16px;max-width:var(--measure)}
+.stage + .stage{border-top:1px solid var(--line-2)}
+.stage-idx{font-size:var(--fs-cap);letter-spacing:.24em;text-transform:uppercase;color:var(--cream-3);font-variant-numeric:tabular-nums}
+.stage-ghost{position:absolute;right:-4%;top:12%;z-index:-1;font-family:var(--f-display);font-size:clamp(5rem,13vw,11rem);line-height:1;white-space:nowrap;
+  color:transparent;-webkit-text-stroke:1px rgba(201,164,91,.13);pointer-events:none;user-select:none}
+.js .stage.rv{opacity:1;transform:none}
+.js .stage.rv > :not(.stage-ghost){opacity:0;transform:translateY(22px);transition:opacity 1s var(--ease-out),transform 1.1s var(--ease-out);transition-delay:calc(var(--o,0) * 110ms)}
+.js .stage.rv.in > :not(.stage-ghost){opacity:1;transform:none}
+.stage:hover::before{transform:scale(1.35)}
+.stage::before{content:"";position:absolute;left:-50px;top:calc(clamp(48px,9vh,96px) + .55em);width:11px;height:11px;border-radius:50%;border:1px solid var(--gold);background:var(--ink);transition:background .6s,box-shadow .6s,transform .5s var(--ease-out)}
+.stage.on::before{background:var(--gold);box-shadow:0 0 16px 3px rgba(201,164,91,.55)}
+.stage-mark{font-family:var(--f-display);font-size:clamp(2.6rem,5vw,4rem);line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+.stage h3{font-size:clamp(1.5rem,2.4vw,2.05rem);line-height:1.15}
+.stage p{color:var(--cream-2);font-size:1.03rem}
+.stage .note{font-size:.88rem;color:var(--cream-3);border-left:1px solid var(--line);padding-left:14px}
+.bio-progress{position:fixed;left:0;right:0;top:calc(var(--hdr) + env(safe-area-inset-top,0px));height:2px;z-index:49;background:transparent;pointer-events:none}
+.bio-progress i{display:block;height:100%;background:var(--gold);transform-origin:left;transform:scaleX(var(--p,0))}
+
+/* портрет қонғаннан кейін алтын жол сызылады */
+.bio:not(.drawn) .bio-connector{transform:scaleX(0)}
+.bio:not(.drawn) .tl-track{transform:scaleY(0)}
+.bio.drawn .bio-connector{transition:transform .8s var(--ease)}
+.bio.drawn .tl-track{transition:transform 1.4s var(--ease) .55s}
+
+@media (max-width:860px){
+  .bio{grid-template-columns:1fr;gap:28px;padding-top:calc(var(--hdr) + 28px)}
+  .bio-aside{position:relative;top:0;grid-template-columns:minmax(0,150px) minmax(0,1fr);align-items:end;gap:20px}
+  .bio-steps,.bio-now{display:none}
+  .bio-connector{top:auto;bottom:-28px;left:22px;width:1px;height:28px;transform-origin:top;background:var(--gold)}
+  .bio-connector::after{display:none}
+  .bio:not(.drawn) .bio-connector{transform:scaleY(0)}
+  .tl{padding-left:44px}
+  .stage::before{left:-38px}
+}
+.bio-mini{display:none}
+@media (max-width:860px){.bio-mini{display:grid;gap:6px}.bio-mini b{font-family:var(--f-display);font-weight:400;font-size:1.5rem;line-height:1.1}.bio-mini span{color:var(--cream-3);font-size:.9rem}}
+
+/* ===== KobyzSection ===== */
+.kz{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:clamp(24px,4vw,64px);padding:0 var(--gut);max-width:1440px;margin:0 auto}
+.kz-text{padding-top:calc(var(--hdr) + 56px);display:grid;gap:0;min-width:0}
+.kz-text > header{display:grid;gap:18px;padding-bottom:20px}
+.kz-text h2{font-size:var(--fs-h2);line-height:1}
+.kz-topic{padding-block:34px;border-top:1px solid var(--line-2);display:grid;gap:12px}
+.kz-topic h3{font-size:1.65rem;line-height:1.15;display:flex;align-items:center;gap:14px}
+.kz-topic h3 svg{width:22px;height:22px;color:var(--gold);flex:none}
+.kz-topic p{color:var(--cream-2)}
+.parts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px;margin:6px 0 0}
+.parts div{display:grid;gap:2px;padding-left:14px;border-left:1px solid var(--line)}
+.parts dt{font-family:var(--f-display);font-size:1.15rem;color:var(--gold-hi)}
+.parts dd{margin:0;color:var(--cream-3);font-size:.9rem;line-height:1.45}
+.kz-stage{position:sticky;top:var(--hdr);height:calc(100svh - var(--hdr));min-height:440px;align-self:start}
+/* витрина: дөңгелек карточка емес — жарық түскен музей кеңістігі */
+.kz-canvas{position:absolute;inset:16px 0 24px;overflow:hidden;
+  background:radial-gradient(40% 50% at 50% 0%,rgba(242,214,150,.16),transparent 75%),radial-gradient(60% 55% at 50% 48%,rgba(201,164,91,.12),transparent 70%),radial-gradient(80% 60% at 50% 100%,rgba(23,61,53,.5),transparent 70%)}
+.kz-canvas .corners{inset:0;z-index:2}
+.kz-canvas canvas{opacity:0;transition:opacity 1.4s var(--ease)}
+.kz-canvas.ready canvas{opacity:1}
+.kz-topic.rv{transition-delay:calc(var(--o,0) * 90ms)}
+.kz-canvas canvas{display:block;width:100%!important;height:100%!important;touch-action:none;cursor:grab}
+.kz-canvas canvas:active{cursor:grabbing}
+.kz-floor{position:absolute;left:15%;right:15%;bottom:8%;height:14%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.6),transparent);pointer-events:none}
+.kz-state{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;pointer-events:none}
+.kz-state[hidden]{display:none!important}
+.loader{display:grid;gap:14px;justify-items:center;color:var(--cream-2);font-size:.9rem}
+.loader svg{width:84px;height:84px}
+.loader circle{fill:none;stroke-width:1.5}
+.loader .bg{stroke:var(--line-2)}
+.loader .fg{stroke:var(--gold);stroke-linecap:round;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset .3s}
+.loader b{font-family:var(--f-display);font-weight:400;font-size:1.6rem;color:var(--cream);font-variant-numeric:tabular-nums}
+.fallback{display:grid;gap:12px;justify-items:center;max-width:320px;pointer-events:auto}
+.fallback .sil{width:90px;height:270px;background:linear-gradient(var(--gold-hi),var(--wood));opacity:.55;
+  -webkit-mask:var(--kobyz-mask) center/contain no-repeat;mask:var(--kobyz-mask) center/contain no-repeat}
+.fallback b{font-family:var(--f-display);font-weight:400;font-size:1.4rem}
+.fallback p{color:var(--cream-3);font-size:.9rem}
+.kz-controls{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;gap:0;padding:0;border-radius:2px;background:rgba(15,12,10,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);z-index:3}
+.kz-controls button{width:46px;height:44px;border-radius:0;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:var(--cream-2);transition:background .3s,color .3s}
+.kz-controls button + button{border-left:1px solid var(--line-2)}
+.kz-controls button:hover{background:rgba(201,164,91,.14);color:var(--cream)}
+.kz-controls button[aria-pressed="true"]{color:var(--gold-hi)}
+.kz-controls button:disabled{opacity:.35;cursor:default}
+.kz-controls svg{width:19px;height:19px}
+.kz-hint{position:absolute;right:22px;top:20px;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-3);z-index:2}
+.kz-credit{position:absolute;left:0;right:0;bottom:2px;text-align:center;font-size:.72rem;color:var(--cream-3);margin:0}
+.kz-credit a{color:var(--gold);text-decoration:none}.kz-credit a:hover{text-decoration:underline}
+.kz-photo{position:absolute;left:clamp(14px,2vw,28px);top:34px;z-index:4;margin:0;padding:8px 8px 10px;background:rgba(242,235,221,.05);border:1px solid var(--line);border-radius:1px;
+  transform:rotate(-4deg);box-shadow:0 18px 40px rgba(0,0,0,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.kz-photo::before{content:"";position:absolute;inset:-30% -60%;background:radial-gradient(closest-side,rgba(242,214,150,.42),rgba(201,164,91,.18) 45%,transparent 75%);z-index:-1;pointer-events:none;animation:breathe 7s ease-in-out infinite}
+.kz-photo img{height:clamp(130px,22vh,210px);width:auto;aspect-ratio:427/1280;filter:drop-shadow(0 0 14px rgba(230,201,138,.45))}
+.kz-photo figcaption{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-3);margin-top:6px;text-align:center}
+@media (max-width:960px){
+  .kz{grid-template-columns:1fr}
+  .kz-stage{position:relative;top:0;height:68svh;min-height:380px;order:-1;margin-top:calc(var(--hdr) + 8px)}
+  .kz-text{padding-top:24px}
+  .kz-photo img{height:110px}
+  .kz-hint{display:none}
+}
+@media (max-width:520px){.parts{grid-template-columns:1fr}}
+
+/* ===== MusicGallerySection ===== */
+.gal-bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;transition:opacity 1s var(--ease)}
+.gal{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:calc(var(--hdr) + 56px) var(--gut) 0}
+.gal-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,5vw,72px);align-items:center;padding-bottom:clamp(36px,6vw,72px)}
+.gal-head > div{display:grid;gap:18px;min-width:0}
+.gal-head h2{font-size:var(--fs-h2);line-height:1}
+.gal-cover{position:relative;margin:0;display:grid;justify-items:center}
+.gal-cover::before{content:"";position:absolute;width:300px;height:300px;left:50%;top:50%;margin:-150px 0 0 -150px;border-radius:50%;
+  background:radial-gradient(circle,rgba(242,214,150,.6),rgba(201,164,91,.3) 35%,transparent 70%);animation:breathe 7s ease-in-out infinite}
+.gal-cover::after{content:"";position:absolute;width:300px;height:300px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;border:1px solid var(--line-2)}
+.gal-cover img{height:clamp(220px,40vh,360px);width:auto;aspect-ratio:427/1280;position:relative;z-index:1;filter:drop-shadow(0 0 22px rgba(230,201,138,.45)) drop-shadow(0 24px 40px rgba(0,0,0,.6))}
+
+@media (max-width:700px){
+  .gal-head{grid-template-columns:1fr}
+  .gal-cover{order:2;justify-self:center}
+  .gal-cover img{height:190px}
+  .gal-cover::before,.gal-cover::after{width:220px;height:220px;margin:-110px 0 0 -110px}
+  .gal-cover::after{margin:0}
+}
+/* мұрағат тізімі: карточкалар емес, сызықпен бөлінген жазбалар */
+.kuys{display:grid;gap:0;border-top:1px solid var(--line)}
+.kuy{position:relative;display:grid;grid-template-columns:6rem minmax(0,1fr) minmax(280px,380px);grid-template-areas:"no title player" "no sum player";
+  column-gap:clamp(20px,3vw,48px);row-gap:6px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line-2);min-width:0;
+  background:linear-gradient(90deg,rgba(201,164,91,.07),transparent 60%) no-repeat 0 0/0% 100%;transition:background-size 1.2s var(--ease-out)}
+.kuy::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:0;background:var(--gold);transition:width 1.2s var(--ease-out)}
+.kuy:hover::before{width:6rem}
+.kuy.playing::before{width:100%}
+.kuy.playing{background-size:100% 100%}
+.js .kuy.rv{transition-delay:calc(var(--o,0) * 70ms)}
+.kuy-top{grid-area:no;align-self:start;display:grid;gap:10px;justify-items:start}
+.kuy-len{display:block;margin-top:6px;font-family:var(--f-body);font-size:.78rem;color:var(--cream-3);letter-spacing:.08em}
+.kuy-no{font-family:var(--f-display);color:var(--gold);font-size:1.5rem;line-height:1;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.kuy > h3{grid-area:title;align-self:end;transition:color .6s}
+.kuy.playing > h3{color:var(--gold-hi)}
+.kuy-sum{grid-area:sum;align-self:start;max-width:52ch}
+.kuy .player{grid-area:player}
+@media (max-width:820px){
+  .kuy{grid-template-columns:3.6rem minmax(0,1fr);grid-template-areas:"no title" "no sum" "player player";padding:24px 0}
+  .kuy .player{margin-top:10px}
+  .kuy-no{font-size:1.2rem}
+}
+.kuy-eq{display:flex;gap:3px;align-items:flex-end;height:16px;opacity:0;transition:opacity .4s}
+.kuy-eq i{width:3px;background:var(--gold);height:30%;border-radius:2px}
+.kuy.playing .kuy-eq{opacity:1}
+.kuy.playing .kuy-eq i{animation:eq 1s ease-in-out infinite}
+.kuy-eq i:nth-child(2){animation-delay:-.3s!important}.kuy-eq i:nth-child(3){animation-delay:-.6s!important}.kuy-eq i:nth-child(4){animation-delay:-.15s!important}
+@keyframes eq{0%,100%{height:25%}50%{height:100%}}
+.kuy h3{font-size:clamp(1.7rem,2.4vw,2.2rem);line-height:1.05}
+.kuy-sum{color:var(--cream-2)}
+.kuy details{border-top:1px solid var(--line-2);padding-top:10px}
+.kuy summary{cursor:pointer;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);list-style:none;display:flex;align-items:center;gap:8px;min-height:32px}
+.kuy summary::-webkit-details-marker{display:none}
+.kuy summary::after{content:"+";font-size:1.1rem;transition:transform .3s}
+.kuy details[open] summary::after{transform:rotate(45deg)}
+.kuy details p{color:var(--cream-2);font-size:.95rem;margin-top:8px}
+.kuy details p.empty{color:var(--cream-3);font-style:italic}
+
+/* AudioPlayer */
+.player{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 16px;align-items:center;padding-top:6px}
+.p-play{width:52px;height:52px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--gold-hi);cursor:pointer;display:grid;place-items:center;transition:transform .4s var(--ease-out),background .4s,color .4s,box-shadow .6s;grid-row:span 2}
+.p-play:hover{background:var(--gold);color:var(--ink)}
+.kuy.playing .p-play{background:var(--gold);color:var(--ink);box-shadow:0 0 0 6px rgba(201,164,91,.12),0 0 28px rgba(230,201,138,.35)}
+.p-play:active{transform:scale(.96)}
+.p-play svg{width:20px;height:20px}
+.p-play:disabled{background:transparent;color:var(--cream-3);border-color:var(--line);cursor:not-allowed}
+.p-main{display:grid;gap:4px;min-width:0}
+.p-times{display:flex;justify-content:space-between;font-size:.78rem;color:var(--cream-3);font-variant-numeric:tabular-nums}
+.p-vol{display:flex;align-items:center;gap:10px;color:var(--cream-3)}
+.p-vol svg{width:16px;height:16px;flex:none}
+.p-vol input{max-width:120px}
+.p-msg{grid-column:1/-1;font-size:.82rem;color:var(--cream-3);display:flex;gap:8px;align-items:center}
+.p-msg::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--wood);flex:none}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:24px;background:transparent;cursor:pointer;--p:0%}
+input[type=range]:disabled{cursor:not-allowed;opacity:.5}
+input[type=range]::-webkit-slider-runnable-track{height:3px;border-radius:3px;background:linear-gradient(90deg,var(--gold) var(--p),rgba(242,235,221,.16) var(--p))}
+input[type=range]::-moz-range-track{height:3px;border-radius:3px;background:rgba(242,235,221,.16)}
+input[type=range]::-moz-range-progress{height:3px;border-radius:3px;background:var(--gold)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--cream);margin-top:-5.5px;border:0;box-shadow:0 0 0 4px rgba(201,164,91,.25)}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--cream);border:0}
+
+/* ===== VirtualMuseumSection ===== */
+.mus{position:relative;overflow:hidden}
+.mus-stage{position:relative;min-height:min(92svh,980px);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:clamp(16px,3vh,32px);padding:calc(var(--hdr) + 40px) var(--gut) 0;
+  background:radial-gradient(70% 60% at 50% 62%,rgba(23,61,53,.75),transparent 72%),linear-gradient(180deg,#0c1512 0%,#14100d 70%,var(--ink) 100%)}
+.mus-light{position:absolute;left:50%;top:58%;width:min(1300px,140vw);height:70%;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(closest-side,rgba(230,201,138,.32),rgba(201,164,91,.1) 50%,transparent 75%);pointer-events:none;opacity:1}
+.mus-beam{position:absolute;left:50%;top:0;width:min(560px,70vw);height:80%;transform:translateX(-50%);pointer-events:none;
+  background:linear-gradient(180deg,rgba(242,235,221,.12),transparent 85%);clip-path:polygon(42% 0,58% 0,100% 100%,0 100%);opacity:.6}
+.mus-figure{position:relative;width:min(1100px,100%,calc((100svh - var(--hdr) - 390px) * 1.5));min-width:min(100%,320px);margin:0;z-index:1}
+.mus-clip{position:relative;overflow:hidden}
+.mus-figure img{width:100%;height:auto;aspect-ratio:1600/1067;transform-origin:50% 70%;filter:drop-shadow(0 0 28px rgba(230,201,138,.35)) drop-shadow(0 40px 60px rgba(0,0,0,.6))}
+.mus-figure::before{content:"";position:absolute;left:8%;right:8%;top:6%;bottom:2%;border-radius:50%;background:radial-gradient(closest-side,rgba(242,214,150,.5),rgba(201,164,91,.24) 45%,transparent 76%);z-index:0;pointer-events:none;animation:breathe 8s ease-in-out infinite}
+.mus-clip{z-index:1}
+.mus-floor{position:absolute;left:4%;right:4%;bottom:-6%;height:16%;background:radial-gradient(closest-side,rgba(0,0,0,.75),transparent);z-index:-1}
+.mus-title{position:relative;z-index:2;display:grid;gap:14px;justify-items:center;text-align:center;max-width:720px}
+.mus-title h2{font-size:var(--fs-h2);line-height:1}
+/* компьютерде: мәтін сол жақта, мемориал оң жақта (үлкенірек) */
+@media (min-width:861px){
+  .mus-stage{display:grid;grid-template-columns:minmax(280px,.72fr) minmax(0,1.45fr);align-items:center;gap:clamp(24px,4vw,64px);
+    min-height:100svh;padding:calc(var(--hdr) + 24px) var(--gut) 40px;max-width:1500px;margin:0 auto}
+  .mus-title{justify-items:start;text-align:left;max-width:none}
+  .mus-figure{width:min(100%,calc((100svh - var(--hdr) - 120px) * 1.5));justify-self:center}
+  .mus-light{left:64%;top:55%;width:min(1100px,90vw)}
+  .mus-beam{left:64%}
+}
+.mus-3d{position:absolute;inset:0;z-index:2;opacity:0;transition:opacity 1.6s var(--ease)}
+.mus-3d canvas{display:block;width:100%!important;height:100%!important;cursor:grab}
+.mus-3d canvas:active{cursor:grabbing}
+.mus-figure.has3d .mus-3d{opacity:1}
+.mus-figure.has3d .mus-clip img{opacity:0;transition:opacity 1.2s var(--ease)}
+.mus-figure.has3d::before{opacity:.75}
+.mus-hint{display:none;color:var(--gold)}
+.mus-figure.has3d .mus-hint{display:inline}
+.mus-figure .corners{inset:-14px -18px -10px;z-index:2;--c:rgba(201,164,91,.22);--s:28px}
+.mus-cap{position:relative;z-index:2;margin-top:14px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:var(--fs-cap);letter-spacing:.2em;text-transform:uppercase;color:var(--cream-3)}
+.mus-cap b{font-weight:500;color:var(--gold)}
+.view.play .mus-cap{animation:fadeIn 1.4s var(--ease) both 2.6s}
+.view.play .mus-figure .corners{animation:fadeIn 1.6s var(--ease) both 2.2s}
+.view.play .mus-light{animation:fadeIn 2s var(--ease) both .2s}
+.view.play .mus-beam{animation:fadeIn 2.6s var(--ease) both .6s}
+.view.play .mus-clip{animation:reveal 2s var(--ease-io) both .6s}
+.view.play .mus-figure img{animation:approach 22s cubic-bezier(.3,0,.3,1) both 1.2s}
+.view.play .mus-title > *{animation:fadeUp 1.2s var(--ease) both;animation-delay:calc(1.8s + var(--k,0) * .18s)}
+@keyframes fadeIn{from{opacity:0}}
+@keyframes reveal{from{clip-path:inset(100% 0 0 0);transform:translateY(40px)}to{clip-path:inset(0 0 0 0);transform:none}}
+@keyframes approach{from{transform:scale(1)}to{transform:scale(1.07)}}
+.mus-info{max-width:1240px;margin:0 auto;padding:clamp(48px,7vw,96px) var(--gut) 0;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(28px,5vw,80px)}
+.mus-info p{color:var(--cream-2)}
+.mus-info .txt{display:grid;gap:16px}
+.mus-facts{margin:0;display:grid;gap:0;align-content:start}
+.mus-facts div{display:grid;grid-template-columns:minmax(0,9em) minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--line-2)}
+.mus-facts dt{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding-top:4px}
+.mus-facts dd{margin:0;color:var(--cream-2)}
+.mus-facts dd.pending{color:var(--cream-3);font-style:italic}
+.chron{max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,110px) var(--gut) 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);gap:clamp(24px,5vw,80px)}
+.chron-head{display:grid;gap:14px;align-content:start;position:sticky;top:calc(var(--hdr) + 32px);align-self:start}
+.chron h3{font-size:var(--fs-h3);line-height:1.05}
+.chron-list{list-style:none;margin:0;padding:0;position:relative}
+.chron-list::before{content:"";position:absolute;left:5.6rem;top:12px;bottom:12px;width:1px;background:var(--line)}
+.chron-list li{display:grid;grid-template-columns:5.6rem minmax(0,1fr);gap:28px;padding:16px 0;position:relative}
+.chron-list li::after{content:"";position:absolute;left:calc(5.6rem - 4px);top:calc(16px + .7em);width:9px;height:9px;border-radius:50%;background:var(--ink);border:1px solid var(--gold)}
+.chron-y{font-family:var(--f-display);font-size:1.7rem;line-height:1.2;color:var(--gold);font-variant-numeric:tabular-nums}
+.chron-list p{color:var(--cream-2);padding-left:6px;transition:color .4s}
+.chron-list li::after{transition:background .4s,box-shadow .4s}
+.chron-list li:hover p{color:var(--cream)}
+.chron-list li:hover::after{background:var(--gold);box-shadow:0 0 12px rgba(201,164,91,.6)}
+.chron-list li.rv{transition-delay:calc(var(--o,0) * 80ms)}
+@media (max-width:860px){.chron{grid-template-columns:1fr}.chron-head{position:relative;top:0}
+  .chron-list::before{left:4.2rem}.chron-list li{grid-template-columns:4.2rem minmax(0,1fr);gap:20px}.chron-list li::after{left:calc(4.2rem - 4px)}.chron-y{font-size:1.4rem}}
+.film{max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,110px) var(--gut) 0}
+.film-in{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center;padding-top:clamp(28px,4vw,44px);border-top:1px solid var(--line)}
+.film-cover{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line);border-radius:2px;
+  background:radial-gradient(70% 70% at 50% 60%,rgba(201,164,91,.22),transparent 70%),linear-gradient(180deg,#1b2a25,#120e0b);text-decoration:none}
+.film-cover img{position:absolute;inset:10% 8% 4%;width:84%;height:86%;object-fit:contain;filter:drop-shadow(0 18px 30px rgba(0,0,0,.55));transition:transform 1.2s var(--ease-out)}
+.film-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,12,10,.55),transparent 45%);pointer-events:none}
+.film-play{position:absolute;left:50%;top:50%;z-index:2;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid var(--gold);background:rgba(15,12,10,.6);color:var(--gold-hi);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  transition:transform .6s var(--ease-out),background .4s,color .4s;box-shadow:0 0 0 10px rgba(201,164,91,.08)}
+.film-play svg{width:26px;height:26px;margin-left:4px}
+.film-badge{position:absolute;left:16px;bottom:14px;z-index:2;font-size:var(--fs-cap);letter-spacing:.22em;text-transform:uppercase;color:var(--cream-2)}
+.film-cover:hover img{transform:scale(1.04)}
+.film-cover.playing .film-play,.film-cover.playing .film-badge{display:none}
+.film-cover:hover .film-play,.film-cover:focus-visible .film-play{transform:scale(1.08);background:var(--gold);color:var(--ink)}
+.film-txt{display:grid;gap:16px;justify-items:start}
+.film-txt h3{font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1.15}
+.film-src{color:var(--cream-3);font-size:.9rem;letter-spacing:.04em}
+@media (max-width:860px){.film-in{grid-template-columns:1fr}}
+.legacy{max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,110px) var(--gut) 0}
+.legacy-in{display:grid;gap:28px;padding-top:clamp(28px,4vw,44px);border-top:1px solid var(--line)}
+.legacy h3{font-size:var(--fs-h3);line-height:1.05}
+.legacy ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.legacy li{display:grid;gap:8px;padding-top:16px;border-top:1px solid var(--line);align-content:start}
+.legacy-img{position:relative;margin:0 0 6px;height:104px;display:grid;place-items:center}
+.legacy-img::before{content:"";position:absolute;inset:6% 4%;border-radius:50%;background:radial-gradient(closest-side,rgba(242,214,150,.45),rgba(201,164,91,.18) 50%,transparent 78%);animation:breathe 7s ease-in-out infinite}
+.legacy li:hover .legacy-img img{transform:translateY(-4px)}
+.legacy-img img{transition:transform .8s var(--ease-out);position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 18px rgba(230,201,138,.35)) drop-shadow(0 18px 28px rgba(0,0,0,.5))}
+.legacy li b{font-family:var(--f-display);font-weight:400;font-size:1.25rem;color:var(--gold-hi);line-height:1.2}
+.legacy li span{color:var(--cream-2);font-size:.95rem}
+@media (max-width:860px){
+  .mus-info{grid-template-columns:1fr}
+  .legacy ul{grid-template-columns:1fr}
+  .mus-stage{min-height:auto;padding-bottom:40px}
+}
+
+/* Қорытынды экран */
+.finale{position:relative;min-height:88svh;display:grid;place-items:center;padding:96px var(--gut);overflow:hidden}
+/* қорытынды: сол жақта қобыз суреті, оң жақта мәтін — ешнәрсе мәтіннің үстіне түспейді */
+.finale-wrap{position:relative;display:grid;grid-template-columns:minmax(150px,240px) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:center;max-width:1100px;width:100%}
+.finale-fig{position:relative;margin:0;display:grid;justify-items:center;opacity:0;transform:translateY(30px);transition:opacity 1.4s var(--ease-out),transform 1.6s var(--ease-out)}
+.finale.in .finale-fig{opacity:1;transform:none}
+.finale-fig::before{content:"";position:absolute;inset:10% -40%;border-radius:50%;background:radial-gradient(closest-side,rgba(242,214,150,.42),rgba(201,164,91,.16) 50%,transparent 78%);animation:breathe 7s ease-in-out infinite;pointer-events:none}
+.finale-fig img{position:relative;height:min(68svh,600px);width:auto;max-width:100%;aspect-ratio:427/1280;object-fit:contain;filter:drop-shadow(0 0 22px rgba(230,201,138,.4)) drop-shadow(0 24px 40px rgba(0,0,0,.55))}
+.finale-in{position:relative;display:grid;gap:26px;justify-items:start;text-align:left;min-width:0}
+.finale-in .finale-sum{justify-items:start}
+@media (max-width:760px){
+  .finale-wrap{grid-template-columns:1fr;gap:28px}
+  .finale-fig img{height:240px}
+  .finale-in{justify-items:center;text-align:center}
+  .finale-in .finale-sum{justify-items:center}
+}
+.finale q{font-family:var(--f-display);font-size:clamp(1.9rem,3.6vw,3.2rem);line-height:1.12;quotes:"«" "»";text-wrap:balance;
+  text-shadow:0 2px 30px rgba(15,12,10,.9)}
+.finale small{color:var(--cream-3);letter-spacing:.2em;text-transform:uppercase;font-size:.75rem}
+.foot{text-align:center;padding:28px var(--gut) 40px;color:var(--cream-3);font-size:.8rem;border-top:1px solid var(--line-2)}
+
+/* scroll reveal */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+
+/* фондық музыка батырмасы — тек дыбыс белгісі */
+.bg-btn{position:fixed;right:max(16px,var(--gut));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:55;display:grid;place-items:center;width:46px;height:46px;padding:0;
+  border:1px solid var(--line);border-radius:50%;background:rgba(15,12,10,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--cream-3);cursor:pointer;transition:color .4s,border-color .4s,box-shadow .6s}
+.bg-btn svg{width:20px;height:20px}
+.bg-btn:hover{border-color:var(--gold);color:var(--cream)}
+.bg-btn.on{color:var(--gold-hi);border-color:var(--gold);box-shadow:0 0 18px rgba(201,164,91,.25)}
+.bg-btn .mx{display:none}
+.bg-btn:not(.on) .w1,.bg-btn:not(.on) .w2{display:none}
+.bg-btn:not(.on) .mx{display:inline}
+.bg-btn.on .w1{animation:wave 1.6s ease-in-out infinite}
+.bg-btn.on .w2{animation:wave 1.6s ease-in-out infinite .3s}
+@keyframes wave{0%,100%{opacity:.35}50%{opacity:1}}
+
+/* transition layers */
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60}
+.flyer{position:fixed;left:0;top:0;z-index:61;pointer-events:none;transform-origin:0 0;will-change:transform}
+.flyer.portrait-img{max-width:none}
+.veil{position:fixed;inset:0;z-index:58;pointer-events:none;background:radial-gradient(circle at 50% 50%,rgba(201,164,91,.12),var(--ink-2) 70%);opacity:0;display:grid;place-items:center}
+.veil-card{display:grid;gap:10px;justify-items:center;text-align:center;padding:0 16px}
+.veil-card span{font-family:var(--f-display);font-size:1.2rem;color:var(--gold);letter-spacing:.1em}
+.veil-card b{font-family:var(--f-display);font-weight:400;font-size:clamp(2rem,5vw,3.6rem);color:var(--cream);line-height:1}
+.veil-card i{display:block;width:60px;height:1px;background:var(--gold)}
+body.busy{cursor:progress}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.15s!important;transition-delay:0s!important}
+  .js .rv{opacity:1;transform:none}
+  .view.play .mus-figure img{animation:none}
+}
+</style>
+<style>[hidden]{display:none!important}body{margin:0}</style>
+</head>
+<body>
+
+
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ Header ============ -->
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="#basty" data-go="basty"><span class="brand-mark">Ы</span><span>Ықылас</span></a>
+    <nav class="nav" id="nav" aria-label="Негізгі бөлімдер">
+      <a href="#basty" data-go="basty"><i>I</i>Басты бет</a>
+      <a href="#omir" data-go="omir"><i>II</i>Өмір жолы</a>
+      <a href="#qobyz" data-go="qobyz"><i>III</i>Қобыз әлемі</a>
+      <a href="#kuyler" data-go="kuyler"><i>IV</i>Күйлер галереясы</a>
+      <a href="#muzei" data-go="muzei"><i>V</i>Виртуалды музей</a>
+      <span class="nav-ink" id="navInk"></span>
+    </nav>
+    <button class="burger" id="burger" aria-label="Мәзірді ашу" aria-expanded="false" aria-controls="nav"><span></span></button>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ============ HeroSection ============ -->
+  <section class="view" id="basty" data-view="basty" aria-label="Басты бет">
+    <div class="hero">
+      <canvas class="hero-dust" id="dust" aria-hidden="true"></canvas>
+      <div class="hero-text">
+        <p class="eyebrow fade-up" style="--d:.1s" data-t="hero.eyebrow"></p>
+        <p class="hero-motto fade-up" style="--d:.3s" data-t="essay.title"></p>
+        <h1 class="hero-name" id="heroName" aria-label="Ықылас Дүкенұлы"></h1>
+        <div class="hero-years fade-up" style="--d:1.2s"><span data-t="hero.born"></span><i></i><span data-t="hero.died"></span></div>
+        <p class="hero-desc fade-up" style="--d:1.4s" data-t="hero.description"></p>
+        <dl class="hero-facts fade-up" style="--d:1.6s" id="heroFacts"></dl>
+        <div class="hero-actions fade-up" style="--d:1.8s">
+          <a class="btn solid" href="#omir" data-go="omir">Өмір жолын зерттеу
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn" href="#qobyz" data-go="qobyz">Қобыз әлеміне ену</a>
+        </div>
+      </div>
+      <video class="hero-video" id="heroVideo" muted autoplay loop playsinline preload="auto" disablepictureinpicture aria-hidden="true"></video>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="corners" aria-hidden="true"></div>
+      <p class="hero-chapter" aria-hidden="true"><b>I</b>Портрет</p>
+      <!-- Портреттің «Өмір жолына» ұшуы үшін видеодағы бейненің үстіне көрінбейтін якорь -->
+      <img class="portrait-img hero-anchor" id="heroPortrait" data-share="portrait" data-src="portrait" alt="">
+      <div class="hero-figure" hidden>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BiographySection ============ -->
+  <section class="view" id="omir" data-view="omir" aria-label="Өмір жолы" hidden>
+    <div class="bio-progress" aria-hidden="true"><i id="bioBar"></i></div>
+    <div class="bio" id="bio">
+      <aside class="bio-aside">
+        <div class="bio-frame">
+          <img class="portrait-img" id="bioPortrait" data-share="portrait" data-src="portrait" alt="Ықылас Дүкенұлының портреті">
+          <span class="bio-connector" aria-hidden="true"></span>
+        </div>
+        <div class="bio-now" aria-hidden="true"><span id="bioNow"></span></div>
+        <div class="bio-mini"><b>Ықылас Дүкенұлы</b><span data-t="hero.yearsShort"></span></div>
+        <ol class="bio-steps" id="bioSteps"></ol>
+      </aside>
+      <div>
+        <header class="bio-head">
+          <p class="eyebrow"><span class="ch-no">II</span>Өмірбаян</p>
+          <h2>Өмір жолы</h2>
+          <p class="lead" data-t="bioIntro"></p>
+        </header>
+        <div class="tl" id="tl">
+          <div class="tl-track" aria-hidden="true"><div class="tl-fill" id="tlFill"></div></div>
+        </div>
+        <aside class="author-note rv"><p class="eyebrow">Зерттеушінің ойы</p><p data-t="essay.bioEnd"></p></aside>
+      </div>
+    </div>
+    <div class="next-link"><a class="btn solid" href="#qobyz" data-go="qobyz">Қобыз әлеміне өту
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </section>
+
+  <!-- ============ KobyzSection ============ -->
+  <section class="view" id="qobyz" data-view="qobyz" aria-label="Қобыз әлемі" hidden>
+    <div class="kz">
+      <div class="kz-text">
+        <header>
+          <p class="eyebrow"><span class="ch-no">III</span>Аспап</p>
+          <h2>Қобыз әлемі</h2>
+          <p class="lead" data-t="kobyzIntro"></p>
+        </header>
+        <div id="kzTopics"></div>
+        <div class="next-link" style="justify-content:flex-start">
+          <button class="btn solid" type="button" data-go="kuyler">Күйлер галереясына өту
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12c2-5 4-5 6 0s4 5 6 0 4-5 6 0"/></svg></button>
+        </div>
+      </div>
+      <!-- Kobyz3DViewer -->
+      <div class="kz-stage">
+        <div class="kz-canvas" id="kzCanvas">
+          <div class="kz-floor" aria-hidden="true"></div>
+          <div class="corners" aria-hidden="true"></div>
+          <span class="kz-hint" id="kzHint">Айналдыру · жақындату</span>
+          <div class="kz-state" id="kzLoading"><div class="loader" role="status" aria-live="polite">
+            <svg viewBox="0 0 84 84"><circle class="bg" cx="42" cy="42" r="38"/><circle class="fg" id="kzRing" cx="42" cy="42" r="38" stroke-dasharray="238.8" stroke-dashoffset="238.8"/></svg>
+            <b id="kzPct">0%</b><span>3D қобыз жүктелуде</span></div></div>
+          <div class="kz-state" id="kzFail" hidden><div class="fallback"><span class="sil"></span><b>3D көрініс қолжетімсіз</b><p id="kzFailMsg">Модель жүктелмеді. Сайттың қалған бөлімдері қалыпты жұмыс істейді.</p></div></div>
+          <div class="kz-controls" role="toolbar" aria-label="3D модельді басқару">
+            <button type="button" id="kzReset" title="Бастапқы көрініс" aria-label="Бастапқы көрініске қайтару" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4"/></svg></button>
+            <button type="button" id="kzSpin" title="Айналдыру" aria-label="Айналдыруды тоқтату" aria-pressed="true" disabled><svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="5" width="3.2" height="14" rx="1"/><rect x="13.8" y="5" width="3.2" height="14" rx="1"/></svg></button>
+            <button type="button" id="kzOut" title="Алыстату" aria-label="Алыстату" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M16.5 16.5 21 21"/></svg></button>
+            <button type="button" id="kzIn" title="Жақындату" aria-label="Жақындату" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M11 8v6M16.5 16.5 21 21"/></svg></button>
+          </div>
+        </div>
+        <p class="kz-credit">3D модель: <a href="https://sketchfab.com/3d-models/kazakh-qobyz-kobyz-c94229e78d834bd4bb465c287d7f01c1" target="_blank" rel="noopener">Kazakh Qobyz (Kobyz)</a> · <a href="https://sketchfab.com/Q3D_Open_Library" target="_blank" rel="noopener">Q3D_Library</a>, Sketchfab · <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
+        <figure class="kz-photo">
+          <img id="cornerPhoto" data-share="kobyzphoto" data-src="kobyzPhoto" alt="Көне қылқобыздың суреті">
+          <figcaption>Қылқобыз</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MusicGallerySection ============ -->
+  <section class="view" id="kuyler" data-view="kuyler" aria-label="Күйлер галереясы" hidden>
+    <canvas class="gal-bg" id="waves" aria-hidden="true"></canvas>
+    <div class="gal">
+      <div class="gal-head">
+        <div>
+          <p class="eyebrow"><span class="ch-no">IV</span>Музыкалық мұрағат</p>
+          <h2>Күйлер галереясы</h2>
+          <p class="lead" data-t="galleryIntro"></p>
+        </div>
+        <figure class="gal-cover"><img id="galleryCover" data-share="kobyzphoto" data-src="kobyzPhoto" alt="Қылқобыз"></figure>
+      </div>
+      <div class="kuys" id="kuys"></div>
+    </div>
+    <div class="next-link" style="position:relative;z-index:1"><a class="btn solid" href="#muzei" data-go="muzei">Виртуалды музейге өту
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </section>
+
+  <!-- ============ VirtualMuseumSection ============ -->
+  <section class="view" id="muzei" data-view="muzei" aria-label="Виртуалды музей" hidden>
+    <div class="mus">
+      <div class="mus-stage">
+        <div class="mus-light" aria-hidden="true"></div>
+        <div class="mus-beam" aria-hidden="true"></div>
+        <div class="mus-title">
+          <p class="eyebrow" style="--k:0"><span class="ch-no">V</span>Виртуалды музей</p>
+          <h2 style="--k:1" data-t="museum.title"></h2>
+          <p class="mus-lead" style="--k:2" data-t="essay.museum"></p>
+        </div>
+        <figure class="mus-figure" data-par=".05">
+          <div class="mus-clip"><img id="museumImg" data-src="mausoleum" data-t-alt="museum.title" alt="">
+            <div class="mus-3d" id="mus3d" aria-label="Мемориалдың 3D үлгісі: бұрып қарауға болады" role="img"></div></div>
+          <div class="mus-floor" aria-hidden="true"></div>
+          <div class="corners" aria-hidden="true"></div>
+          <figcaption class="mus-cap" id="musCap"></figcaption>
+        </figure>
+      </div>
+      <div class="mus-info">
+        <div class="txt rv" id="musDesc"><p class="eyebrow">Сәулеті</p></div>
+        <dl class="mus-facts rv" id="musFacts"></dl>
+      </div>
+      <section class="chron" aria-labelledby="chronTitle">
+        <div class="chron-head rv"><p class="eyebrow">Шежіре</p><h3 id="chronTitle">Мемориал тарихы</h3></div>
+        <ol class="chron-list" id="chronList"></ol>
+      </section>
+      <section class="legacy" aria-labelledby="legacyTitle">
+        <div class="legacy-in rv">
+          <p class="eyebrow">Естелік</p>
+          <h3 id="legacyTitle">Өнер мұрасын еске алу</h3>
+          <ul id="legacyList"></ul>
+        </div>
+      </section>
+      <section class="film" aria-labelledby="filmTitle" id="filmSec">
+        <div class="film-in rv">
+          <a class="film-cover" id="filmLink" target="_blank" rel="noopener" aria-describedby="filmTitle">
+            <img id="filmImg" alt="" loading="lazy">
+            <span class="film-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a.8.8 0 0 0 1.2.7l10.4-6.5a.8.8 0 0 0 0-1.4L9.2 4.8A.8.8 0 0 0 8 5.5Z"/></svg></span>
+            <span class="film-badge">YouTube</span>
+          </a>
+          <div class="film-txt">
+            <p class="eyebrow">Бейнежазба</p>
+            <h3 id="filmTitle"></h3>
+            <p class="film-src" id="filmSrc"></p>
+            <a class="btn" id="filmBtn" target="_blank" rel="noopener">YouTube-та көру
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+          </div>
+        </div>
+      </section>
+      <section class="finale" id="finale" aria-label="Қорытынды">
+        <div class="finale-wrap">
+        <figure class="finale-fig"><img data-src="kobyzPhoto" alt="Қылқобыз" loading="lazy"></figure>
+        <div class="finale-in">
+          <svg class="orn" viewBox="0 0 220 22" aria-hidden="true"><use href="#orn"/></svg>
+          <small>Ықылас Дүкенұлы · 1843–1916</small>
+          <h3 class="finale-title" data-t="essay.title"></h3>
+          <p class="finale-p rv" data-t="essay.finale"></p>
+          <div class="finale-sum rv"><b>Қорытынды</b><p data-t="essay.conclusion"></p></div>
+          <q data-t="finale"></q>
+          <a class="btn" href="#basty" data-go="basty">Басына оралу</a>
+        </div>
+        </div>
+      </section>
+      <footer class="foot">Ықылас Дүкенұлының өмірі мен шығармашылығына арналған интерактивті жоба</footer>
+    </div>
+  </section>
+</main>
+
+<button class="bg-btn" id="bgBtn" type="button" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path class="w1" d="M15.5 9a4 4 0 0 1 0 6"/><path class="w2" d="M18 6.5a7.5 7.5 0 0 1 0 11"/><path class="mx" d="M16 9.5l5 5M21 9.5l-5 5"/></svg></button>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="veil" id="veil" aria-hidden="true"><div class="veil-card"><span id="veilNo"></span><b id="veilTitle"></b><i></i></div></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- қошқар мүйіз мотиві: ортадан екі жаққа таралған бұйра -->
+  <symbol id="orn" viewBox="0 0 220 22">
+    <path d="M0 11H84M136 11H220"/>
+    <path d="M110 19V11C110 5 104 3 100 6C96 9 98 15 103 14C106 13 106 9 103 9"/>
+    <path d="M110 11C110 5 116 3 120 6C124 9 122 15 117 14C114 13 114 9 117 9"/>
+    <path d="M100 6C94 2 88 8 84 11M120 6C126 2 132 8 136 11"/>
+  </symbol>
+</svg>
+
+<script>
+/* =====================================================================
+   CONFIG — барлық сурет, модель, аудио жолдары мен мәтіндер осы жерде.
+   Файлды ауыстыру үшін тек жолды өзгертіңіз.
+   ===================================================================== */
+const CONFIG = {
+  assets: {
+    portrait:   "assets/images/ikhlas-portrait.webp",
+    mausoleum:  "assets/images/ikhlas-mausoleum.webp",
+    kobyzPhoto: "assets/images/kobyz-photo.webp",
+    // GLB файлын да қолдануға болады (мысалы "assets/models/kobyz.glb"), егер хостинг .glb файлдарын берсе.
+    // Бұл нұсқада модель glTF JSON + текстуралар түрінде сақталған.
+    model:      "assets/models/kobyz.gltf.json",
+    // Виртуалды музейдегі мемориалдың 3D үлгісі (Tripo, жеңілдетілген көшірме)
+    mausoleumModel: "assets/models/mausoleum.gltf.json",
+    heroVideo:  "assets/video/hero.mp4",
+    heroVideoWebm: "assets/video/hero.webm",
+    heroPoster: "assets/video/hero-poster.jpg",
+    // фондық музыка («Кертолғау»)
+    bgMusic:    "assets/audio/kuy-01.mp3"
+  },
+  // Модельдің бағыты: autoUpright — ең ұзын осьті тігінен қояды; flip — басы төмен қарап тұрса true етіңіз.
+  model: { autoUpright: true, flip: false, extraRotationY: 0 },
+
+  hero: {
+    eyebrow: "Күйші · Қобызшы · Композитор",
+    first: "Ықылас",
+    last: "Дүкенұлы",
+    born: "1843",
+    died: "1916",
+    yearsShort: "1843 – 1916",
+    description: "Қазақтың дәстүрлі қобыз өнерін дамытқан күйші-композитор.",
+    facts: [
+      ["Туған жері", "Қазіргі Қарағанды облысы, Жаңаарқа ауданы"],
+      ["Аспабы", "Қылқобыз"],
+      ["Дүниеден өткен жері", "Қазіргі Жамбыл облысы, Сарысу ауданы"],
+      ["Шәкірттері", "Сүгір, Ашай, Әйкен"]
+    ]
+  },
+
+  // Зерттеушінің мәтіні — бөлімдерге таратылған
+  essay: {
+    title: "Өткеннен жеткен үн — бүгінгі ұрпаққа аманат",
+    bioEnd: "Ықыластың мұрасы бізге ұлттық өнердің дамуы жеке адамның талантымен ғана емес, оның өскен ортасымен, тарихи кезеңімен және халықтың мәдени жадында сақталған дәстүрлермен де байланысты екенін көрсетеді.",
+    museum: "Бүгінгі цифрлық технологиялар осы мұраны жаңа ұрпаққа жеткізудің қосымша мүмкіндігін береді. Қобыздың үш өлшемді моделін зерттеу, күйлерді тыңдау, тарихи оқиғаларды интерактивті хронология арқылы тану — дәстүрлі өнерді қазіргі заман тәсілдерімен таныстырудың бір жолы.",
+    finale: "Сондықтан Ықылас мұрасын сақтау дегеніміз — тек өткенді еске алу емес. Бұл — ұлттық музыканы түсіну, тарихи сабақтастықты бағалау және мәдени құндылықтарды келесі ұрпаққа жеткізу.",
+    conclusion: "Ықылас Дүкенұлының мұрасы — белгілі бір кезеңнің музыкалық жетістігі ғана емес, қазақ халқының тарихи жадын, рухани дүниесін және шығармашылық мүмкіндігін танытатын ұлттық құндылық. Оның өнерін зерттеу арқылы біз өткенді танып қана қоймай, бүгінгі мәдениетіміздің тамырын да тереңірек түсінеміз."
+  },
+  bioIntro: "Менің зерттеуім бойынша, Ықылас Дүкенұлының тарихи тұлға ретіндегі басты ерекшелігі — көне музыкалық дәстүрді сақтай отырып, оны жаңа көркемдік мазмұнмен байыта білуінде.",
+  bio: [
+    { mark: "1843", step: "Шыққан ортасы", title: "Балалық шағы мен шыққан ортасы",
+      text: [
+        "Ықылас 1843 жылы қазіргі Қарағанды облысының Жаңаарқа ауданында дүниеге келген.",
+        "Әкесі Дүкен күйшілік өнерді ұстанған адам болған. Атасы Алтынбек — қобыз бен домбыра жасап, оларда жақсы ойнаған белгілі зергер-ұста."
+      ] },
+    { mark: "7–8 жас", step: "Қобызды меңгеруі", title: "Қобыз өнерін меңгеруі",
+      text: [
+        "Ықыластың дарыны ерте байқалған. Ол жеті-сегіз жасынан қобыз тартып, әкесінің күйлерін тез үйренген.",
+        "Он бес жасынан бастап үлкен жиындарда өнер көрсете бастаған."
+      ] },
+    { mark: "18 жас", step: "Шығармашылығы", title: "Шығармашылық қалыптасуы",
+      text: [
+        "Он сегіз жасында әкесінің күйлерін қайта өңдеп, оларды классикалық деңгейге көтерген. Алғашқы күйлерін халық эпосындағы оқиғалар мен аңыздар негізінде шығарған.",
+        "Жанақ пен Шөже ақындар оған батасын берген, Тәттімбет пен Тоқа күйшілер оның өнерін жоғары бағалаған."
+      ] },
+    { mark: "Мұра", step: "Күйшілік мұрасы", title: "Күйшілік мұрасы",
+      text: [
+        "Ықылас күйлерінің қатарында «Кертолғау», «Жезкиік», «Аққу», «Шыңырау», «Жалғыз аяқ», «Қазан», «Қорқыт», «Қамбар — Назым», «Ерден» бар.",
+        "Шәкірттері — Сүгір, Ашай, Әйкен. Ұлы Түсіпбек те қобызды жақсы тартып, әкесінің көп күйін Д. Мықтыбаевқа үйреткен. Ж. Қаламбаев Ықылас күйлерін Сүгірден үйренген."
+      ] },
+    { mark: "1916", step: "Тарихтағы орны", title: "Қазақ музыкасы тарихындағы орны",
+      text: [
+        "Ықылас 1916 жылы қазіргі Жамбыл облысының Сарысу ауданында дүниеден өткен.",
+        "Оның күйлері шәкірттері мен ізбасарлары арқылы бүгінге жетті. Алматыдағы қазақ халық музыкалық аспаптар музейі мен Жамбыл облысындағы музыка мектебі Ықылас есімімен аталады."
+      ] }
+  ],
+
+  kobyzIntro: "Менің ойымша, Ықыластың ең маңызды еңбегі — қобыздың үнін халықтың рухани дүниесін жеткізетін көркем тіл дәрежесіне көтеруі. Оның шығармашылығы арқылы көне аспаптың мүмкіндігі кеңейіп, қобыз күйі жаңа мазмұнмен толықты.",
+  kobyzTopics: [
+    { icon: "scroll", title: "Қобыздың тарихы",
+      text: "Халық аңызы қобызды Қорқыт атамен байланыстырады. Ерте заманда қобыз бақсылардың қолындағы киелі аспап саналған, кейін күйшілік өнердің дербес аспабына айналды." },
+    { icon: "parts", title: "Құрылысы мен негізгі бөліктері",
+      text: "Қылқобыздың денесі мойынмен тұтас ойылады. Ішегі мен ысқышының қылы — жылқы қылы.",
+      parts: [
+        ["Бас пен құлақ", "Ішектерді бұрап, күйге келтіретін бөлік"],
+        ["Мойын", "Ішектер бойымен созылатын ұзын бөлік"],
+        ["Шанақ", "Тостаған тәрізді ойылған дене"],
+        ["Тері қақпақ", "Шанақтың төменгі бөлігін жабады"],
+        ["Тиек", "Ішектерді теріден көтеріп ұстайды"],
+        ["Қыл ішек", "Жылқы қылынан тағылған екі ішек"],
+        ["Ысқыш", "Қыл тартылған садақ тәрізді"]
+      ] },
+    { icon: "craft", title: "Дәстүрлі жасалу ерекшеліктері",
+      text: "Дәстүрлі қылқобыз бір кесек ағаштан ойылып жасалады. Шанақтың жоғарғы жағы ашық қалады, төменгі жағына тері керіледі. Ойнағанда ішекті мойынға басып тұрмай, саусақпен жанап ұстайды, сондықтан аспаптың үні қоңыр әрі терең шығады." },
+    { icon: "steppe", title: "Қазақ мәдениетіндегі орны",
+      text: "Қобыз үні ел жадында көне дәуірмен, аңыз-әпсаналармен байланысты. ХХ ғасырда қобыз оркестр мен концерт сахнасына шықты, оның прима-қобыз сияқты жаңа түрлері пайда болды. Бүгінде қылқобыз дәстүрлі күйшілік өнердің негізгі аспаптарының бірі." },
+    { icon: "bow", title: "Ықылас және қобыз",
+      text: "Ықылас — қылқобыздың классикалық күй мұрасын қалыптастырған күйшілердің бірі. Оның күйлері Сүгір, Ашай, Әйкен сияқты шәкірттері арқылы, кейін Ж. Қаламбаев сияқты орындаушылар арқылы бүгінге жетті." }
+  ],
+
+  galleryIntro: "Ықылас қобыз өнерін бұрынғы сарындарды орындаумен ғана шектемеді. Ол аспаптың мүмкіндігін кеңейтіп, халықтың өмірі, табиғат, адам сезімі және қоғамдық қайшылықтар туралы ойларын күй арқылы жеткізді. Оның «Аққу», «Жезкиік», «Кертолғау», «Ерден» сияқты шығармалары әртүрлі тақырыптарды музыкалық тілмен бейнелейтін мұра ретінде бағаланады.",
+  // audio: "" бос болса — карточкада «аудиожазба әлі қосылмаған» деген белгі шығады.
+  // Мысалы: audio: "assets/audio/kuy-01.mp3"
+  kuys: [
+    { title: "Кертолғау", summary: "Заман келбеті мен уақыт туралы толғаныс. «Тоғыз тарау — Кертолғау» деп те аталады.", story: "", audio: "assets/audio/kuy-01.mp3", duration: "2:16" },
+    { title: "Жезкиік",   summary: "Кең дала мен еркіндіктің бейнесі.", story: "", audio: "assets/audio/kuy-02.mp3", duration: "2:53" },
+    { title: "Аққу",      summary: "Өмірге деген сүйіспеншілік, өлімді жеңу.", story: "", audio: "assets/audio/kuy-03.mp3", duration: "2:18" },
+    { title: "Шыңырау",   summary: "Зұлымдықтан туған қасірет.", story: "", audio: "assets/audio/kuy-04.mp3", duration: "2:29" },
+    { title: "Жалғыз аяқ", summary: "Әділдік жолындағы күрес пен үміт.", story: "", audio: "assets/audio/kuy-05.mp3", duration: "2:35" },
+    { title: "Қазан",     summary: "Батырлық дәстүрге құрмет көрсеткен салтанатты шеру.", story: "", audio: "assets/audio/kuy-06.mp3", duration: "3:51" },
+    { title: "Қорқыт",    summary: "Бақытты өмір мен арманға деген сағыныш.", story: "", audio: "assets/audio/kuy-07.mp3", duration: "3:30" },
+    { title: "Қамбар — Назым", summary: "Махаббат жыры.", story: "", audio: "assets/audio/kuy-08.mp3", duration: "2:53" }
+  ],
+
+  museum: {
+    title: "Ықылас Дүкенұлы мемориалы",
+    description: [
+      "Мемориал 1993 жылы Ықылас Дүкенұлының 150 жылдық мерейтойына арнап салынған. Ол монолитті темір бетоннан және кірпіштен тұрғызылып, мәрмәр мен гранит тақталармен қапталған.",
+      "Үш бөліктен тұратын күрделі композициялы құрылыс қобыздың пішінін сомдайды. Негізгі бөлігі — шеңбер пішінді көрхана. Оның үсті биік конус тәрізді күмбезбен жабылған, күмбез витражбен кесілген. Ғимараттың жалпы биіктігі — 5,4 м.",
+      "Көрханаға ұзын дәліз арқылы кіреді, дәліздің екі қапталында жапсарлас шағын бөлмелер бар. Көрхананың ортасында жазуы бар мемориалдық тақта тұр, оның іргесіне өңірдегі әулиелердің жерлерінен әкелінген топырақ айналдыра қойылған. Қосымша бөлмелер музей ретінде безендірілген, онда қобызшы шығармаларының атаулары мәрмәр тасқа қашалып жазылған.",
+      "Мемориал аумағы металл қоршаумен қоршалған, тақта тас төселген, көрініс қоятын алаңы бар."
+    ],
+    facts: [
+      ["Атауы", "Ықылас Дүкенұлы мемориалы"],
+      ["Орналасқан жері", "Саудакент ауылынан оңтүстікке қарай 1 шақырым жерде, Жанатас қаласына баратын трассаның оң жағында"],
+      ["Салынған жылы", "1993 жыл, Ықыластың 150 жылдық мерейтойына орай"],
+      ["Сәулетшілері", "Э. М. Байтенов, А. С. Еспембетов, Г. Б. Сахариева"],
+      ["Құрылысы", "Монолитті темір бетон, кірпіш; мәрмәр және гранит қаптама"],
+      ["Биіктігі", "5,4 м"],
+      ["Мәртебесі", "Республикалық маңызы бар тарих және мәдениет ескерткіші (2017)"]
+    ],
+    history: [
+      ["1993", "Ықылас Дүкенұлының 150 жылдық мерейтойына арналып мемориал салынды."],
+      ["2006", "«Мәдени мұра» мемлекеттік бағдарламасы аясында жергілікті бюджеттен 200 мың теңге бөлініп, күрделі жөндеу жүргізілді."],
+      ["2008", "Аудандық бюджеттен 1 млн 500 мың теңге бөлініп, ағымдағы жөндеу жұмыстары жүргізілді."],
+      ["2010", "Жамбыл облысының жергілікті маңызы бар мемлекеттік тарих және мәдениет ескерткіштерінің тізіміне енді."],
+      ["2011", "Тәуелсіздіктің 20 жылдығы қарсаңында қалпына келтірілді: ішкі қабырғаның құлаған тұстары жаңартылып, пластик қабырғалармен қапталды. Жұмысты жергілікті кәсіпкер Тоқтасын Біләлиев өз қаржысымен атқарды."],
+      ["2017", "«Рухани жаңғыру» бағдарламасы аясында мемлекеттік, орыс және ағылшын тілдерінде бағыттауыш және ақпараттық тақтайшалар орнатылды."],
+      ["2017", "Республикалық маңызы бар тарих және мәдениет ескерткіштері тізіміне және «Қазақстанның киелі жерлер географиясы» жобасы бойынша өңірлік қасиетті нысандар тізіміне енді."]
+    ],
+    // Бейнежазба: сыртқы сілтеме (YouTube ойнатқышын бет ішіне енгізу мүмкін емес)
+    video: {
+      title: "Ықылас Дүкенұлы атындағы Ұлттық музыкалық аспаптар мұражайы",
+      source: "Jibek Joly TV · YouTube",
+      url: "https://youtu.be/R2eVe88E3_g",
+      embed: true, // өз хостингте (GitHub Pages, Netlify) true етсеңіз, видео сайттың ішінде ойнайды
+      cover: "assets/images/legacy-museum.webp"
+    },
+    legacy: [
+      ["Аспаптар музейі", "Алматыдағы қазақ халық музыкалық аспаптар музейі Ықылас есімімен аталады.", "assets/images/legacy-museum.webp"],
+      ["Музыка мектебі", "Жамбыл облысы, Байқадам ауылындағы музыка мектебіне Ықылас есімі берілген.", "assets/images/legacy-school.webp"],
+      ["Күйшінің қобызы", "Ықыластың қобызы Жамбыл облысы, Жайлаукөл ауылында ұрпақтарының қолында сақталған.", "assets/images/kobyz-photo.webp"]
+    ]
+  },
+
+  finale: "Күй\u00a0— ұлттың жады, қобыз\u00a0— ұрпаққа жеткен мұра"
+};
+</script>
+
+<script>
+/* =====================================================================
+   App: Header, Sections, SectionTransition, AudioPlayer
+   ===================================================================== */
+(() => {
+  "use strict";
+  document.documentElement.classList.add("js");
+  const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const get = (path) => path.split(".").reduce((o, k) => (o ? o[k] : undefined), CONFIG);
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+  const ease = (t) => 1 - Math.pow(1 - t, 3);
+  const easeIO = (t) => (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  const tween = (ms, fn) => new Promise((res) => {
+    const t0 = performance.now();
+    const step = (now) => { const t = Math.min(1, (now - t0) / ms); fn(t); t < 1 ? requestAnimationFrame(step) : res(); };
+    requestAnimationFrame(step);
+  });
+  const svgIcon = (name) => ({
+    scroll: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7"/><path d="M6 4a2 2 0 0 0-2 2v1h4V6a2 2 0 0 0-2-2ZM9 9h7M9 13h7M9 17h4"/></svg>',
+    parts: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="10" y="2" width="5" height="5" rx="1"/><path d="M12.5 7v6"/><path d="M7.5 13h10l-1.5 9h-7z"/><path d="M8.5 17h8"/></svg>',
+    craft: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20 14 10M14 10l3-3 3 3-3 3zM4 20l-1 1"/><path d="M9 4c2 0 3 1 3 3"/></svg>',
+    steppe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 18c4-3 7-3 10-1s6 2 10-1"/><circle cx="17" cy="7" r="3"/></svg>',
+    bow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 20C10 13 14 9 21 4"/><path d="M3 20c5-1 12-8 18-16"/></svg>'
+  })[name] || "";
+
+  /* ---------- Мәтіндер мен суреттерді CONFIG-тен толтыру ---------- */
+  $$("[data-t]").forEach((el) => { const v = get(el.dataset.t); if (typeof v === "string") el.textContent = v; });
+  $$("[data-t-alt]").forEach((el) => { el.alt = get(el.dataset.tAlt) || ""; });
+  document.documentElement.style.setProperty("--kobyz-mask", `url("${CONFIG.assets.kobyzPhoto}")`);
+
+  function bindImage(img) {
+    const key = img.dataset.src, src = CONFIG.assets[key];
+    const fail = () => {
+      const ph = document.createElement("div");
+      ph.className = "img-missing " + img.className;
+      ph.style.aspectRatio = getComputedStyle(img).aspectRatio;
+      ph.innerHTML = `<div><b>Сурет әлі қосылмаған</b>${src || key}</div>`;
+      ph.dataset.share = img.dataset.share || "";
+      if (img.id) { ph.id = img.id; img.removeAttribute("id"); }
+      img.replaceWith(ph);
+    };
+    if (!src) return fail();
+    img.addEventListener("error", fail, { once: true });
+    img.decoding = "async";
+    img.src = src;
+  }
+  $$("img[data-src]").forEach(bindImage);
+
+  // Hero name — әріптер біртіндеп
+  const nameEl = $("#heroName");
+  let ci = 0;
+  [CONFIG.hero.first, CONFIG.hero.last].forEach((word) => {
+    const ln = document.createElement("span"); ln.className = "ln"; ln.setAttribute("aria-hidden", "true");
+    [...word.toUpperCase()].forEach((c) => { const s = document.createElement("span"); s.className = "ch"; s.textContent = c; s.style.setProperty("--i", ci++); ln.appendChild(s); });
+    nameEl.appendChild(ln);
+  });
+  $("#heroFacts").innerHTML = CONFIG.hero.facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("");
+
+  // Biography
+  const tl = $("#tl");
+  CONFIG.bio.forEach((s, i) => {
+    const art = document.createElement("article");
+    art.className = "stage rv"; art.id = "stage-" + i;
+    const kids = [`<span class="stage-idx">Кезең ${String(i + 1).padStart(2, "0")} / ${String(CONFIG.bio.length).padStart(2, "0")}</span>`, `<div class="stage-mark">${s.mark}</div>`, `<h3>${s.title}</h3>`, ...s.text.map((p) => `<p>${p}</p>`), ...(s.note ? [`<p class="note">${s.note}</p>`] : [])];
+    art.innerHTML = `<span class="stage-ghost" aria-hidden="true" data-par=".22">${s.mark}</span>` + kids.map((h, k) => h.replace(/^<(\w+)/, `<$1 style="--o:${k}"`)).join("");
+    tl.appendChild(art);
+  });
+  $("#bioSteps").innerHTML = CONFIG.bio.map((s, i) => `<li data-i="${i}"><button type="button"><span>${String(i + 1).padStart(2, "0")}</span>${s.step}</button></li>`).join("");
+  $$("#bioSteps li").forEach((li) => li.querySelector("button").addEventListener("click", () => {
+    const el = $("#stage-" + li.dataset.i);
+    window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 120, behavior: RM ? "auto" : "smooth" });
+  }));
+
+  // Kobyz topics
+  $("#kzTopics").innerHTML = CONFIG.kobyzTopics.map((t, i) => `
+    <article class="kz-topic rv" style="--o:${i % 3}"><h3>${svgIcon(t.icon)}${t.title}</h3><p>${t.text}</p>
+    ${t.parts ? `<dl class="parts">${t.parts.map(([a, b]) => `<div><dt>${a}</dt><dd>${b}</dd></div>`).join("")}</dl>` : ""}</article>`).join("");
+
+  // Museum
+  $("#musDesc").insertAdjacentHTML("beforeend", [].concat(CONFIG.museum.description).map((p) => `<p>${p}</p>`).join(""));
+  $("#chronList").innerHTML = (CONFIG.museum.history || []).map(([y, t], i) => `<li class="rv" style="--o:${i % 4}"><span class="chron-y">${y}</span><p>${t}</p></li>`).join("");
+  {
+    const yr = (CONFIG.museum.facts.find(([k]) => /Салынған/.test(k)) || [, ""])[1].match(/\d{4}/);
+    const place = (CONFIG.museum.facts.find(([k]) => /Орналасқан/.test(k)) || [, ""])[1].match(/[А-ЯӘҒҚҢӨҰҮІҺЁ][а-яәғқңөұүіһё]+кент|[А-ЯӘҒҚҢӨҰҮІҺЁ][а-яәғқңөұүіһё]+ ауыл/);
+    $("#musCap").innerHTML = `<span><b>${CONFIG.museum.title}</b></span><span class="mus-hint">3D үлгі · бұрып қараңыз</span><span>${[yr && yr[0], place && place[0]].filter(Boolean).join(" · ")}</span>`;
+  }
+  $("#musFacts").innerHTML =CONFIG.museum.facts.map(([k, v]) => `<div><dt>${k}</dt><dd class="${v ? "" : "pending"}">${v || "Нақтылануда"}</dd></div>`).join("");
+  {
+    const v = CONFIG.museum.video;
+    if (v && v.url) {
+      $("#filmLink").href = v.url; $("#filmBtn").href = v.url;
+      $("#filmLink").setAttribute("aria-label", `«${v.title}» бейнежазбасын YouTube-та ашу`);
+      $("#filmTitle").textContent = v.title; $("#filmSrc").textContent = v.source || "";
+      if (v.cover) $("#filmImg").src = v.cover;
+      const id = (v.url.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/) || [])[1];
+      if (v.embed && id) {
+        $("#filmLink").addEventListener("click", (e) => {
+          e.preventDefault();
+          const box = $("#filmLink"), f = document.createElement("iframe");
+          f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+          f.title = v.title; f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen"; f.allowFullscreen = true;
+          f.style.cssText = "position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3";
+          box.appendChild(f); box.classList.add("playing");
+          if (typeof BgMusic !== "undefined") BgMusic.duck(true);
+        }, { once: true });
+      }
+    } else $("#filmSec").hidden = true;
+  }
+  $("#legacyList").innerHTML = CONFIG.museum.legacy.map(([a, b, img]) => `<li>${img ? `<figure class="legacy-img"><img src="${img}" alt="${a}" loading="lazy" decoding="async"></figure>` : ""}<b>${a}</b><span>${b}</span></li>`).join("");
+
+  /* ---------- AudioPlayer ---------- */
+  const fmt = (s) => (isFinite(s) && s >= 0 ? `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}` : "--:--");
+  const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a.8.8 0 0 0 1.2.7l10.4-6.5a.8.8 0 0 0 0-1.4L9.2 4.8A.8.8 0 0 0 8 5.5Z"/></svg>';
+  const ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6.5" y="5" width="3.6" height="14" rx="1"/><rect x="13.9" y="5" width="3.6" height="14" rx="1"/></svg>';
+  const AudioState = { current: null, playing: false };
+
+  class AudioPlayer {
+    constructor(card, kuy, idx) {
+      this.card = card; this.kuy = kuy; this.audio = null;
+      const id = "k" + idx;
+      card.insertAdjacentHTML("beforeend", `
+        <div class="player">
+          <button class="p-play" type="button" aria-label="«${kuy.title}» күйін ойнату">${ICON_PLAY}</button>
+          <div class="p-main">
+            <input type="range" id="${id}-seek" min="0" max="1000" value="0" step="1" aria-label="Орындалу жолағы">
+            <div class="p-times"><span class="cur">0:00</span><span class="dur">--:--</span></div>
+          </div>
+          <div class="p-vol" style="grid-column:2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/></svg>
+            <input type="range" id="${id}-vol" min="0" max="100" value="80" aria-label="Дыбыс деңгейі"></div>
+          <p class="p-msg" hidden></p>
+        </div>`);
+      this.btn = $(".p-play", card); this.seek = $(`#${id}-seek`, card); this.vol = $(`#${id}-vol`, card);
+      this.cur = $(".cur", card); this.dur = $(".dur", card); this.msg = $(".p-msg", card);
+      this.paint(this.vol, 80);
+      if (kuy.duration) this.dur.textContent = kuy.duration;
+      if (!kuy.audio) { this.disable("Аудиожазба әлі қосылмаған"); return; }
+      this.btn.addEventListener("click", () => this.toggle());
+      this.seek.addEventListener("input", () => {
+        this.paint(this.seek, this.seek.value / 10);
+        if (this.audio && isFinite(this.audio.duration)) this.audio.currentTime = (this.seek.value / 1000) * this.audio.duration;
+      });
+      this.vol.addEventListener("input", () => { this.paint(this.vol, this.vol.value); if (this.audio) this.audio.volume = this.vol.value / 100; });
+    }
+    paint(input, pct) { input.style.setProperty("--p", pct + "%"); }
+    disable(text) {
+      this.btn.disabled = true; this.seek.disabled = true; this.vol.disabled = true;
+      this.msg.hidden = false; this.msg.textContent = text;
+    }
+    ensure() {
+      if (this.audio) return this.audio;
+      const a = this.audio = new Audio();
+      a.preload = "metadata"; a.volume = this.vol.value / 100;
+      a.addEventListener("loadedmetadata", () => { this.dur.textContent = fmt(a.duration); });
+      a.addEventListener("timeupdate", () => {
+        this.cur.textContent = fmt(a.currentTime);
+        if (isFinite(a.duration) && a.duration > 0) { const p = (a.currentTime / a.duration) * 1000; this.seek.value = p; this.paint(this.seek, p / 10); }
+      });
+      a.addEventListener("ended", () => this.setPlaying(false));
+      a.addEventListener("pause", () => this.setPlaying(false));
+      a.addEventListener("play", () => this.setPlaying(true));
+      a.addEventListener("error", () => { this.setPlaying(false); this.disable("Аудиофайл табылмады немесе ашылмады"); });
+      a.src = this.kuy.audio;
+      return a;
+    }
+    toggle() {
+      const a = this.ensure();
+      if (a.paused) {
+        if (AudioState.current && AudioState.current !== this) AudioState.current.stop();
+        AudioState.current = this;
+        const p = a.play(); if (p && p.catch) p.catch(() => {});
+      } else a.pause();
+    }
+    stop() { if (this.audio && !this.audio.paused) this.audio.pause(); }
+    setPlaying(on) {
+      this.card.classList.toggle("playing", on);
+      this.btn.innerHTML = on ? ICON_PAUSE : ICON_PLAY;
+      this.btn.setAttribute("aria-label", `«${this.kuy.title}» күйін ${on ? "тоқтату" : "ойнату"}`);
+      AudioState.playing = !!(AudioState.current && AudioState.current.audio && !AudioState.current.audio.paused);
+      if (typeof BgMusic !== "undefined") BgMusic.duck(AudioState.playing);
+    }
+  }
+  const kuysEl = $("#kuys");
+  const players = CONFIG.kuys.map((k, i) => {
+    const card = document.createElement("article");
+    card.className = "kuy rv"; card.style.setProperty("--o", i % 4);
+    card.innerHTML = `<div class="kuy-top"><span class="kuy-no">№ ${String(i + 1).padStart(2, "0")}${k.duration ? `<span class="kuy-len"> · ${k.duration}</span>` : ""}</span><span class="kuy-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>
+      <h3>${k.title}</h3><p class="kuy-sum">${k.summary}</p>`;
+    kuysEl.appendChild(card);
+    return new AudioPlayer(card, k, i);
+  });
+
+  /* ---------- Фондық музыка: «Кертолғау» ---------- */
+  const BgMusic = (() => {
+    const btn = $("#bgBtn"), VOL = .35;
+    if (!CONFIG.assets.bgMusic || !btn) return { duck() {} };
+    const a = new Audio(); a.loop = true; a.preload = "auto"; a.volume = 0; a.src = CONFIG.assets.bgMusic;
+    let enabled = true, ducked = false, fadeRaf = 0, broken = false;
+    try { enabled = localStorage.getItem("ikylas-bg") !== "off"; } catch (e) {}
+    const fade = (to, ms) => new Promise((res) => {
+      cancelAnimationFrame(fadeRaf); const from = a.volume, t0 = performance.now();
+      const st = (now) => { const t = Math.min(1, (now - t0) / ms); a.volume = Math.max(0, Math.min(1, from + (to - from) * t)); t < 1 ? (fadeRaf = requestAnimationFrame(st)) : res(); };
+      fadeRaf = requestAnimationFrame(st);
+    });
+    const sync = () => {
+      const on = enabled && !a.paused;
+      btn.classList.toggle("on", on); btn.setAttribute("aria-pressed", String(enabled));
+      btn.setAttribute("aria-label", enabled ? "Фондық музыканы өшіру («Кертолғау»)" : "Фондық музыканы қосу («Кертолғау»)");
+      btn.title = btn.getAttribute("aria-label");
+    };
+    function start() {
+      if (!enabled || ducked || broken || !a.paused) return;
+      const p = a.play();
+      if (p && p.then) p.then(() => { fade(VOL, 1800); sync(); }).catch(() => sync()); else sync();
+    }
+    function stop(save) { fade(0, 600).then(() => { a.pause(); sync(); }); }
+    a.addEventListener("ended", () => { try { a.currentTime = 0; } catch (e) {} start(); });
+    a.addEventListener("error", () => { broken = true; btn.hidden = true; });
+    a.addEventListener("play", sync); a.addEventListener("pause", sync);
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation(); enabled = !enabled;
+      try { localStorage.setItem("ikylas-bg", enabled ? "on" : "off"); } catch (er) {}
+      enabled ? start() : stop(); sync();
+    });
+    // браузер дыбысты автоқосуды бөгесе — бірінші жанасуда қосылады
+    const firstTouch = () => { start(); };
+    ["pointerdown", "keydown", "touchstart"].forEach((ev) => addEventListener(ev, firstTouch, { passive: true }));
+    sync(); start();
+    return {
+      duck(on) { ducked = on; if (on) { if (!a.paused) fade(0, 500).then(() => { if (ducked) a.pause(); sync(); }); } else start(); }
+    };
+  })();
+
+  /* ---------- Header ---------- */
+  const hdr = $("#hdr"), burger = $("#burger"), ink = $("#navInk");
+  const setMenu = (open) => { hdr.classList.toggle("open", open); burger.setAttribute("aria-expanded", open); burger.setAttribute("aria-label", open ? "Мәзірді жабу" : "Мәзірді ашу"); };
+  burger.addEventListener("click", () => setMenu(!hdr.classList.contains("open")));
+  addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
+  function markNav(id) {
+    $$("#nav a").forEach((a) => { if (a.dataset.go === id) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+    const a = $(`#nav a[data-go="${id}"]`);
+    if (a && a.offsetParent) { ink.style.left = a.offsetLeft + 12 + "px"; ink.style.width = a.offsetWidth - 24 + "px"; }
+  }
+  addEventListener("resize", () => markNav(current));
+  addEventListener("scroll", () => hdr.classList.toggle("scrolled", scrollY > 10), { passive: true });
+
+  /* ---------- Scroll reveal ---------- */
+  const io = "IntersectionObserver" in window ? new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px", threshold: .08 }) : null;
+  const observeReveals = (root) => $$(".rv:not(.in)", root).forEach((el) => (io ? io.observe(el) : el.classList.add("in")));
+
+  /* ---------- FX canvas (SectionTransition) ---------- */
+  const fx = $("#fx"), fctx = fx.getContext("2d");
+  function fxSize() { const d = Math.min(devicePixelRatio || 1, 2); fx.width = innerWidth * d; fx.height = innerHeight * d; fctx.setTransform(d, 0, 0, d, 0, 0); }
+  fxSize(); addEventListener("resize", fxSize);
+  const fxClear = () => fctx.clearRect(0, 0, innerWidth, innerHeight);
+  const glowLine = (pts, alpha, width = 1.4) => {
+    fctx.save(); fctx.globalAlpha = alpha; fctx.lineCap = "round";
+    fctx.shadowColor = "rgba(230,201,138,.9)"; fctx.shadowBlur = 14;
+    fctx.strokeStyle = "#E6C98A"; fctx.lineWidth = width;
+    fctx.beginPath(); pts.forEach(([x, y], i) => (i ? fctx.lineTo(x, y) : fctx.moveTo(x, y))); fctx.stroke(); fctx.restore();
+  };
+  // Өмір жолы → Қобыз: тарихи жол алтын сызық болып тігінен көтеріліп, қобыздың екі ішегіне айналады
+  async function fxPathToStrings(cx) {
+    const H = innerHeight;
+    await tween(650, (t) => { fxClear(); const e = ease(t); glowLine([[cx, H * (1 - e)], [cx, H]], 1, 1.6); });
+    await tween(800, (t) => {
+      fxClear(); const e = easeIO(t), gap = 14 * e;
+      glowLine([[cx - gap, 0], [cx - gap * .4, H]], 1 - t * .9); glowLine([[cx + gap, 0], [cx + gap * .4, H]], 1 - t * .9);
+    });
+    fxClear();
+  }
+  // Қобыз → Күйлер: ішектер бойымен жарық жүріп, алтын сызықтар музыкалық толқынға айналады
+  async function fxStringsToWaves(cx) {
+    const W = innerWidth, H = innerHeight, N = 5, SEG = 90;
+    await tween(700, (t) => {
+      fxClear();
+      for (let k = 0; k < 2; k++) {
+        const x = cx + (k ? 9 : -9);
+        glowLine([[x, H * .12], [x, H * .88]], .55, 1);
+        const y = H * .12 + (H * .76) * ease(t);
+        fctx.save(); fctx.fillStyle = "rgba(242,235,221,.95)"; fctx.shadowColor = "#E6C98A"; fctx.shadowBlur = 24;
+        fctx.beginPath(); fctx.arc(x, y, 3, 0, 7); fctx.fill(); fctx.restore();
+      }
+    });
+    await tween(1200, (t) => {
+      fxClear(); const e = easeIO(t);
+      for (let k = 0; k < N; k++) {
+        const pts = [], x0 = cx + (k - (N - 1) / 2) * 6, amp = (14 + k * 7) * e, ph = k * .9 + t * 3;
+        for (let i = 0; i <= SEG; i++) {
+          const s = i / SEG;
+          const vx = x0, vy = H * .12 + s * H * .76;
+          const hx = s * W, hy = H * .5 + Math.sin(s * Math.PI * (3 + k * .6) + ph) * amp + (k - 2) * 10;
+          pts.push([vx + (hx - vx) * e, vy + (hy - vy) * e]);
+        }
+        glowLine(pts, (1 - t * .55) * (k === 2 ? 1 : .55), k === 2 ? 1.6 : 1);
+      }
+    });
+    await tween(500, (t) => { fx.style.opacity = 1 - t; });
+    fxClear(); fx.style.opacity = 1;
+  }
+  const veil = $("#veil");
+  const CHAPTERS = { basty: ["I", "Портрет"], omir: ["II", "Өмір жолы"], qobyz: ["III", "Қобыз әлемі"], kuyler: ["IV", "Күйлер галереясы"], muzei: ["V", "Виртуалды музей"] };
+  const setVeilCard = (id) => { const c = CHAPTERS[id] || ["", ""]; $("#veilNo").textContent = c[0]; $("#veilTitle").textContent = c[1]; };
+  const veilTo = (o, ms) => veil.animate([{ opacity: getComputedStyle(veil).opacity }, { opacity: o }], { duration: ms, fill: "forwards", easing: "ease" }).finished;
+
+  /* ---------- Shared-element flight (портрет / қобыз суреті) ---------- */
+  function sharedPair(fromView, toView) {
+    for (const el of $$("[data-share]", fromView)) {
+      const to = $(`[data-share="${el.dataset.share}"]`, toView);
+      if (to && el.dataset.share) return [el, to];
+    }
+    return null;
+  }
+  function makeFlyer(el, r) {
+    const f = el.cloneNode(true);
+    f.removeAttribute("id"); f.classList.add("flyer"); f.classList.remove("hero-anchor");
+    Object.assign(f.style, { width: r.width + "px", height: r.height + "px", left: 0, top: 0, margin: 0, transform: `translate(${r.left}px,${r.top}px)`, animation: "none" });
+    document.body.appendChild(f);
+    return f;
+  }
+
+  /* ---------- Views & routing ---------- */
+  const VIEWS = ["basty", "omir", "qobyz", "kuyler", "muzei"];
+  let current = null, busy = false;
+  const viewEl = (id) => document.getElementById(id);
+
+  function replay(el) { el.classList.remove("play"); void el.offsetWidth; el.classList.add("play"); }
+
+  const onEnter = {
+    basty: () => { Dust.start(); HeroVideo.play(); },
+    omir: () => { const b = $("#bio"); b.classList.add("drawn"); Bio.update(); },
+    qobyz: () => { KobyzStage.activate(); },
+    kuyler: () => { Waves.start(); },
+    muzei: () => { const f = $("#finale"); f.classList.remove("in"); Finale.observe(); MuseumStage.activate(); }
+  };
+  const onLeave = {
+    basty: () => { Dust.stop(); HeroVideo.pause(); },
+    omir: () => { $("#bio").classList.remove("drawn"); },
+    qobyz: () => KobyzStage.deactivate(),
+    kuyler: () => { Waves.stop(); players.forEach((p) => p.stop()); },
+    muzei: () => { MuseumStage.deactivate(); }
+  };
+
+  function show(id) {
+    const v = viewEl(id);
+    v.hidden = false; replay(v);
+    window.scrollTo(0, 0);
+    observeReveals(v);
+    markNav(id);
+    if (typeof Parallax !== "undefined") Parallax.run();
+  }
+
+  async function go(id, opts = {}) {
+    if (!VIEWS.includes(id)) id = "basty";
+    setMenu(false);
+    if (id === current) { window.scrollTo({ top: 0, behavior: RM ? "auto" : "smooth" }); return; }
+    if (busy) return;
+    const from = current ? viewEl(current) : null, to = viewEl(id);
+    const fromId = current;
+    if (!opts.fromHash && location.hash !== "#" + id) { try { history.pushState(null, "", "#" + id); } catch (e) { /* sandbox */ } }
+
+    // бірінші жүктеу немесе қозғалысты азайту режимі
+    if (!from) { VIEWS.forEach((v) => { if (v !== id) viewEl(v).hidden = true; }); current = id; show(id); onEnter[id](); return; }
+    busy = true; document.body.classList.add("busy");
+    current = id;
+
+    if (RM) {
+      setVeilCard(id); await veilTo(1, 150); onLeave[fromId](); from.hidden = true; show(id); onEnter[id](); await veilTo(0, 200);
+      busy = false; document.body.classList.remove("busy"); return;
+    }
+
+    const pair = sharedPair(from, to);
+    let flyer = null, r0 = null, srcEl = null;
+    if (pair) {
+      srcEl = pair[0]; r0 = srcEl.getBoundingClientRect();
+      if (r0.bottom < 0 || r0.top > innerHeight || !r0.width) srcEl = null;
+    }
+    if (srcEl) {
+      flyer = makeFlyer(srcEl, r0);
+      if (flyer.decode) { try { await flyer.decode(); } catch (e) {} }
+      srcEl.style.visibility = "hidden";
+    }
+    const isPortrait = !!(flyer && pair && pair[0].dataset.share === "portrait");
+
+    // 1) шығу
+    const exits = [];
+    setVeilCard("");
+    if (fromId === "basty" && flyer) {
+      $(".hero", from).classList.add("leaving");
+      exits.push(flyer.animate([{ transform: `translate(${r0.left}px,${r0.top}px) scale(1)`, opacity: 0 },
+        { transform: `translate(${r0.left}px,${r0.top}px) scale(1)`, opacity: 1, offset: .35 },
+        { transform: `translate(${r0.left - r0.width * .04}px,${r0.top - r0.height * .04}px) scale(1.08)`, opacity: 1, filter: "drop-shadow(0 0 60px rgba(230,201,138,.45))" }],
+        { duration: 1000, easing: "cubic-bezier(.3,0,.2,1)", fill: "forwards" }).finished);
+      $$(".hero-video, .hero-shade", from).forEach((el) => exits.push(el.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 900, delay: 250, fill: "forwards", easing: "ease" }).finished));
+      $$(".hero-text, .halo", from).forEach((el) => exits.push(el.animate([{ opacity: 1 }, { opacity: 0, transform: "translateY(-10px)" }], { duration: 600, fill: "forwards", easing: "ease" }).finished));
+    } else if (fromId === "qobyz" && id === "kuyler") {
+      exits.push(KobyzStage.approach());
+      const cv = $("#kzCanvas").getBoundingClientRect();
+      exits.push(wait(500).then(() => from.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 700, fill: "forwards" }).finished));
+      exits.push(fxStringsToWaves(cv.left + cv.width / 2).then(() => {}));
+    } else if (fromId === "omir" && id === "qobyz") {
+      const run = fxPathToStrings(innerWidth > 960 ? innerWidth * .72 : innerWidth / 2);
+      exits.push(from.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 600, fill: "forwards" }).finished);
+      exits.push(wait(700));
+      to._fx = run;
+    } else if (fromId === "kuyler" && id === "muzei") {
+      $("#waves").style.opacity = 0;
+      exits.push(from.animate([{ opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(6px)" }], { duration: 1000, fill: "forwards", easing: "ease" }).finished);
+    } else {
+      exits.push(from.animate([{ opacity: 1, transform: "none" }, { opacity: 0, transform: "translateY(-14px)" }], { duration: 520, fill: "forwards", easing: "cubic-bezier(.5,0,.75,0)" }).finished);
+      if (!flyer) { setVeilCard(id); exits.push(veilTo(.97, 560).then(() => wait(420))); }
+    }
+    // қобыз → күйлер: толқын ортасында жаңа бөлім ашылады
+    if (fromId === "qobyz" && id === "kuyler") await wait(1250); else await Promise.all(exits);
+
+    onLeave[fromId]();
+    from.hidden = true; from.getAnimations().forEach((a) => a.cancel());
+    $$(".hero-text, .halo, .hero-video, .hero-shade", from).forEach((el) => el.getAnimations().forEach((a) => a.cancel()));
+    $(".hero", from)?.classList.remove("leaving");
+    $("#waves").style.opacity = "";
+
+    // 2) кіру
+    show(id);
+    let dst = null;
+    if (flyer && pair) { dst = pair[1]; dst.style.visibility = "hidden"; }
+    // портрет ұшқанда — бет мазмұны тек портрет қонған соң ашылады
+    const enterAnim = to.animate([{ opacity: 0 }, { opacity: 1 }], { duration: isPortrait ? 900 : 800, easing: "ease", fill: "backwards", delay: isPortrait ? 1850 : flyer ? 250 : 0 }).finished;
+    veilTo(0, 700);
+
+    if (flyer && dst) {
+      const r1 = dst.getBoundingClientRect();
+      const cur = new DOMMatrix(getComputedStyle(flyer).transform);
+      flyer.getAnimations().forEach((a) => a.cancel());
+      Object.assign(flyer.style, { width: r1.width + "px", height: r1.height + "px", transform: `translate(${r1.left}px,${r1.top}px)` });
+      // бастапқы күй — r0 (немесе үлкейтілген r0), r1-ге қатысты
+      const sx0 = (r0.width * (cur.a || 1)) / r1.width, sy0 = (r0.height * (cur.d || 1)) / r1.height;
+      const x0 = cur.e || r0.left, y0 = cur.f || r0.top;
+      const dur = isPortrait ? 2000 : id === "kuyler" ? 1100 : 1250;
+      await flyer.animate([
+        { transform: `translate(${x0}px,${y0}px) scale(${sx0},${sy0})`, filter: isPortrait ? "drop-shadow(0 0 60px rgba(230,201,138,.55))" : "none" },
+        { transform: `translate(${r1.left}px,${r1.top}px) scale(1,1)`, filter: isPortrait ? "drop-shadow(0 0 26px rgba(230,201,138,.4))" : "none" }
+      ], { duration: dur, easing: "cubic-bezier(.65,0,.2,1)" }).finished;
+      dst.style.visibility = ""; flyer.remove(); if (srcEl) srcEl.style.visibility = "";
+    } else if (flyer) { flyer.remove(); if (srcEl) srcEl.style.visibility = ""; }
+
+    onEnter[id]();
+    if (to._fx) { await to._fx; to._fx = null; }
+    await enterAnim;
+    busy = false; document.body.classList.remove("busy");
+  }
+
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest("[data-go]");
+    if (!a) return;
+    e.preventDefault(); go(a.dataset.go);
+  });
+  addEventListener("popstate", () => go(location.hash.slice(1) || "basty", { fromHash: true }));
+
+  /* ---------- Hero video (фон) ---------- */
+  const HeroVideo = (() => {
+    const v = $("#heroVideo"), anchor = () => $("#heroPortrait"), hero = $(".hero");
+    // видеодағы Ықылас бейнесінің шекарасы (1280×720 кадр бойынша)
+    const SRC = { w: 1280, h: 720 }, FIG = { x: 625, y: 45, w: 560, h: 675 };
+    let ok = !!(CONFIG.assets.heroVideo || CONFIG.assets.heroVideoWebm);
+    v.muted = true; v.defaultMuted = true; v.autoplay = true; v.loop = true; v.playsInline = true;
+    v.setAttribute("muted", ""); v.setAttribute("autoplay", ""); v.setAttribute("playsinline", ""); v.setAttribute("webkit-playsinline", "");
+    let want = false;
+    const tryPlay = () => { if (!ok || !want || !v.paused) return; v.muted = true; const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+    v.addEventListener("loadeddata", tryPlay); v.addEventListener("canplay", tryPlay);
+    // үзіліссіз қайталау: кейбір хостингте loop басына орала алмай тоқтап қалады — қолмен басынан бастаймыз
+    v.addEventListener("ended", () => { if (want) { try { v.currentTime = 0; } catch (e) {} tryPlay(); } });
+    v.addEventListener("pause", () => { if (want && !document.hidden) setTimeout(tryPlay, 150); });
+    ["stalled", "waiting", "suspend"].forEach((ev) => v.addEventListener(ev, () => setTimeout(tryPlay, 400)));
+    // күзетші: видео қатып қалса (уақыт жылжымаса) — қайта іске қосады
+    let lastT = -1, still = 0;
+    setInterval(() => {
+      if (!ok || !want || document.hidden) return;
+      const t = v.currentTime, d = v.duration;
+      if (v.paused || t === lastT) still++; else still = 0;
+      lastT = t;
+      if (still >= 2) {
+        still = 0;
+        if (isFinite(d) && d > 0 && t >= d - .35) { try { v.currentTime = 0; } catch (e) {} }
+        tryPlay();
+      }
+    }, 1000);
+    // браузер автоойнатуды бөгесе — бірінші жанасу/айналдыруда қосылады
+    ["pointerdown", "touchstart", "keydown", "scroll", "wheel"].forEach((ev) => addEventListener(ev, tryPlay, { passive: true }));
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) tryPlay(); });
+    // видео ашылмаса — портрет бұрынғы орнына қайтады
+    function fallback() {
+      if (!ok && hero.classList.contains("no-video")) return;
+      ok = false; v.hidden = true; hero.classList.add("no-video");
+      const a = anchor(), fig = $(".hero-figure", hero);
+      if (a && fig) { a.classList.remove("hero-anchor"); a.removeAttribute("style"); a.alt = "Ықылас Дүкенұлының портреті: қолында қылқобыз"; fig.appendChild(a); fig.hidden = false; }
+    }
+    if (ok) {
+      v.poster = CONFIG.assets.heroPoster || "";
+      const list = [[CONFIG.assets.heroVideoWebm, "video/webm"], [CONFIG.assets.heroVideo, "video/mp4"]].filter(([u]) => u);
+      const playable = list.filter(([, t]) => v.canPlayType(t));
+      if (!playable.length) fallback();
+      else {
+        playable.forEach(([u, t], i) => {
+          const src = document.createElement("source"); src.src = u; src.type = t;
+          if (i === playable.length - 1) src.addEventListener("error", fallback);
+          v.appendChild(src);
+        });
+        v.addEventListener("error", fallback);
+      }
+    } else fallback();
+    function place() {
+      const a = anchor(); if (!a || !ok) return;
+      const W = v.clientWidth, H = v.clientHeight; if (!W || !H) return;
+      const sc = Math.max(W / SRC.w, H / SRC.h), dw = SRC.w * sc, dh = SRC.h * sc;
+      const pos = getComputedStyle(v).objectPosition.split(" ").map((t) => parseFloat(t) / 100);
+      const ox = (W - dw) * (isNaN(pos[0]) ? .5 : pos[0]), oy = (H - dh) * (isNaN(pos[1]) ? .5 : pos[1]);
+      Object.assign(a.style, { left: v.offsetLeft + ox + FIG.x * sc + "px", top: v.offsetTop + oy + FIG.y * sc + "px", width: FIG.w * sc + "px", height: FIG.h * sc + "px" });
+    }
+    addEventListener("resize", place);
+    return {
+      play() { place(); requestAnimationFrame(place); want = true; tryPlay(); },
+      pause() { want = false; if (!v.paused) v.pause(); }
+    };
+  })();
+
+  /* ---------- Hero dust ---------- */
+  const Dust = (() => {
+    const c = $("#dust"), x = c.getContext("2d"); let raf = 0, ps = [];
+    const size = () => { const d = Math.min(devicePixelRatio || 1, 2); c.width = c.clientWidth * d; c.height = c.clientHeight * d; x.setTransform(d, 0, 0, d, 0, 0);
+      ps = Array.from({ length: innerWidth < 700 ? 22 : 46 }, () => ({ x: Math.random() * c.clientWidth, y: Math.random() * c.clientHeight, r: Math.random() * 1.4 + .3, v: Math.random() * .18 + .05, a: Math.random() * .5 + .15, p: Math.random() * 6 })); };
+    const draw = (t) => { x.clearRect(0, 0, c.clientWidth, c.clientHeight);
+      for (const p of ps) { p.y -= p.v; p.x += Math.sin(t / 3000 + p.p) * .12; if (p.y < -5) { p.y = c.clientHeight + 5; p.x = Math.random() * c.clientWidth; }
+        x.globalAlpha = p.a * (.6 + .4 * Math.sin(t / 900 + p.p)); x.fillStyle = "#E6C98A"; x.beginPath(); x.arc(p.x, p.y, p.r, 0, 7); x.fill(); }
+      raf = requestAnimationFrame(draw); };
+    addEventListener("resize", () => { if (raf) size(); });
+    return { start() { if (RM) return; size(); cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); }, stop() { cancelAnimationFrame(raf); raf = 0; } };
+  })();
+
+  /* ---------- Biography: прогресс және белсенді кезең ---------- */
+  const Bio = (() => {
+    const fill = $("#tlFill"), bar = $("#bioBar"), stages = () => $$(".stage", tl), steps = () => $$("#bioSteps li");
+    const nowBox = $(".bio-now"); let nowTxt = null;
+    function setNow(t) {
+      if (t === nowTxt || !nowBox) return; nowTxt = t;
+      const old = nowBox.querySelector("span"); const n = document.createElement("span"); n.textContent = t;
+      if (RM || !old || !old.textContent) { nowBox.innerHTML = ""; nowBox.appendChild(n); return; }
+      n.className = "pre"; nowBox.appendChild(n); void n.offsetWidth; n.className = "";
+      old.classList.add("out"); setTimeout(() => old.remove(), 900);
+    }
+    function update() {
+      if (current !== "omir") return;
+      const r = tl.getBoundingClientRect(), mid = innerHeight * .55;
+      const p = Math.max(0, Math.min(1, (mid - r.top) / r.height));
+      fill.style.setProperty("--p", p.toFixed(4));
+      const doc = document.documentElement, total = doc.scrollHeight - innerHeight;
+      bar.style.setProperty("--p", total > 0 ? (scrollY / total).toFixed(4) : 0);
+      let act = 0; stages().forEach((s, i) => { if (s.getBoundingClientRect().top < mid) act = i; });
+      stages().forEach((s, i) => s.classList.toggle("on", i <= act && p > 0));
+      steps().forEach((li, i) => li.classList.toggle("on", i === act));
+      setNow(CONFIG.bio[act] ? CONFIG.bio[act].mark : "");
+    }
+    addEventListener("scroll", update, { passive: true }); addEventListener("resize", update);
+    return { update };
+  })();
+
+  /* ---------- Gallery waves (декоративті анимация, аудио талдауы емес) ---------- */
+  const Waves = (() => {
+    const c = $("#waves"), x = c.getContext("2d"); let raf = 0, amp = 1;
+    const size = () => { const d = Math.min(devicePixelRatio || 1, 1.5); c.width = innerWidth * d; c.height = innerHeight * d; x.setTransform(d, 0, 0, d, 0, 0); };
+    const draw = (t) => {
+      const W = innerWidth, H = innerHeight; x.clearRect(0, 0, W, H);
+      amp += ((AudioState.playing ? 1.9 : 1) - amp) * .03;
+      for (let k = 0; k < 5; k++) {
+        x.beginPath();
+        for (let i = 0; i <= 120; i++) {
+          const s = i / 120, X = s * W;
+          const Y = H * .5 + (k - 2) * 10 + Math.sin(s * Math.PI * (3 + k * .6) + k * .9 + t / (2400 - k * 180)) * (14 + k * 7) * amp * (.4 + .6 * Math.sin(s * Math.PI));
+          i ? x.lineTo(X, Y) : x.moveTo(X, Y);
+        }
+        x.strokeStyle = `rgba(201,164,91,${k === 2 ? .5 : .2})`; x.lineWidth = k === 2 ? 1.4 : 1; x.stroke();
+      }
+      if (!RM) raf = requestAnimationFrame(draw);
+    };
+    addEventListener("resize", () => { if (current === "kuyler") { size(); if (RM) draw(0); } });
+    return { start() { size(); cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); }, stop() { cancelAnimationFrame(raf); raf = 0; } };
+  })();
+
+  /* ---------- Finale ---------- */
+  const Finale = (() => {
+    let ob = null;
+    return { observe() { const f = $("#finale"); if (!("IntersectionObserver" in window)) return f.classList.add("in");
+      ob && ob.disconnect(); ob = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { f.classList.add("in"); ob.disconnect(); } }), { threshold: .35 }); ob.observe(f); } };
+  })();
+
+  /* ---------- Kobyz stage (Kobyz3DViewer-мен байланыс) ---------- */
+  const KobyzStage = (() => {
+    const host = $("#kzCanvas"), loading = $("#kzLoading"), failBox = $("#kzFail"), failMsg = $("#kzFailMsg");
+    const ring = $("#kzRing"), pct = $("#kzPct");
+    const btn = { reset: $("#kzReset"), spin: $("#kzSpin"), zin: $("#kzIn"), zout: $("#kzOut") };
+    let viewer = null, started = false, active = false;
+    const ICON_SPIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v4h-4"/></svg>';
+    const ICON_PAUSE2 = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="5" width="3.2" height="14" rx="1"/><rect x="13.8" y="5" width="3.2" height="14" rx="1"/></svg>';
+    function fail(msg) { loading.hidden = true; failBox.hidden = false; if (msg) failMsg.textContent = msg; Object.values(btn).forEach((b) => (b.disabled = true)); }
+    function progress(p) { const v = Math.round(p * 100); pct.textContent = v + "%"; ring.style.strokeDashoffset = 238.8 * (1 - p); }
+    function whenLib() {
+      return new Promise((res, rej) => {
+        if (window.Kobyz3DViewer) return res(window.Kobyz3DViewer);
+        const t = setTimeout(() => rej(new Error("lib")), 15000);
+        addEventListener("kobyz3d:ready", () => { clearTimeout(t); res(window.Kobyz3DViewer); }, { once: true });
+      });
+    }
+    async function start() {
+      started = true;
+      let Lib;
+      try { Lib = await whenLib(); } catch { return fail("3D кітапханасы жүктелмеді. Интернет байланысын тексеріп, бетті қайта ашыңыз."); }
+      if (!Lib.supported()) return fail("Бұл құрылғыда WebGL қолжетімсіз, сондықтан 3D модель көрсетілмейді.");
+      viewer = new Lib(host, { reducedMotion: RM, orientation: CONFIG.model });
+      try {
+        await viewer.load(CONFIG.assets.model, progress);
+      } catch (e) {
+        viewer.dispose && viewer.dispose(); viewer = null;
+        console.warn("Kobyz3D:", e);
+        return fail("Модель файлы ашылмады (" + CONFIG.assets.model + "). " + (e && e.message ? e.message : ""));
+      }
+      loading.hidden = true;
+      host.classList.add("ready");
+      Object.values(btn).forEach((b) => (b.disabled = false));
+      syncSpin();
+      if (active) { viewer.resume(); viewer.entrance(); } else viewer.pause();
+    }
+    function syncSpin() {
+      const on = viewer ? viewer.autoRotate : false;
+      btn.spin.setAttribute("aria-pressed", on); btn.spin.innerHTML = on ? ICON_PAUSE2 : ICON_SPIN;
+      btn.spin.setAttribute("aria-label", on ? "Айналдыруды тоқтату" : "Айналдыруды қосу"); btn.spin.title = btn.spin.getAttribute("aria-label");
+    }
+    btn.reset.addEventListener("click", () => viewer && viewer.reset());
+    btn.spin.addEventListener("click", () => { if (viewer) { viewer.setAutoRotate(!viewer.autoRotate); syncSpin(); } });
+    btn.zin.addEventListener("click", () => viewer && viewer.zoom(.8));
+    btn.zout.addEventListener("click", () => viewer && viewer.zoom(1.25));
+    return {
+      activate() { active = true; if (!started) start(); else if (viewer) { viewer.resume(); viewer.entrance(); } },
+      deactivate() { active = false; viewer && viewer.pause(); },
+      approach() { return viewer ? viewer.approach() : Promise.resolve(); }
+    };
+  })();
+
+  /* ---------- Museum 3D: мемориалдың 3D үлгісі (сурет — запас нұсқа) ---------- */
+  const MuseumStage = (() => {
+    const host = $("#mus3d"), fig = host && host.closest(".mus-figure");
+    let viewer = null, started = false, active = false;
+    function lib() {
+      return new Promise((res, rej) => {
+        if (window.Kobyz3DViewer) return res(window.Kobyz3DViewer);
+        const t = setTimeout(() => rej(new Error("lib")), 15000);
+        addEventListener("kobyz3d:ready", () => { clearTimeout(t); res(window.Kobyz3DViewer); }, { once: true });
+      });
+    }
+    async function start() {
+      started = true;
+      if (!host || !CONFIG.assets.mausoleumModel) return;
+      let Lib; try { Lib = await lib(); } catch (e) { return; }
+      if (!Lib.supported()) return; // сурет қала береді
+      viewer = new Lib(host, { reducedMotion: RM, orientation: { autoUpright: false }, homeDir: [.55, .32, 1], zoom: false,
+        fitScale: .76, rotateSpeed: .8, target: [0, -.32, 0], polar: [.35, 1.45], touchAction: "pan-y" });
+      try { await viewer.load(CONFIG.assets.mausoleumModel); }
+      catch (e) { console.warn("Mausoleum3D:", e); viewer.dispose && viewer.dispose(); viewer = null; return; }
+      fig.classList.add("has3d");
+      if (active) { viewer.resume(); viewer.entrance(); } else viewer.pause();
+    }
+    return {
+      activate() { active = true; if (!started) start(); else if (viewer) { viewer.resume(); viewer.entrance(); } },
+      deactivate() { active = false; viewer && viewer.pause(); }
+    };
+  })();
+
+  /* ---------- Parallax: бір rAF, тек transform (translate) ---------- */
+  const Parallax = (() => {
+    let ticking = false;
+    function run() {
+      ticking = false;
+      if (RM || !current) return;
+      const v = viewEl(current), H = innerHeight;
+      $$("[data-par]", v).forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > H + 200) return;
+        const k = parseFloat(el.dataset.par) || 0, c = r.top + r.height / 2 - H / 2;
+        el.style.translate = `0 ${(-c * k).toFixed(1)}px`;
+      });
+    }
+    const req = () => { if (!ticking) { ticking = true; requestAnimationFrame(run); } };
+    addEventListener("scroll", req, { passive: true }); addEventListener("resize", req);
+    return { run: req };
+  })();
+
+  /* ---------- Start ---------- */
+  const startId = VIEWS.includes(location.hash.slice(1)) ? location.hash.slice(1) : "basty";
+  go(startId, { fromHash: true });
+  // 3D модельді алдын ала жүктеу (басты бет ашылғаннан кейін)
+  setTimeout(() => { const c = navigator.connection; if (document.hidden || (c && c.saveData) || current === "qobyz") return; KobyzStage.activate(); if (current !== "qobyz") KobyzStage.deactivate(); }, 3500);
+})();
+</script>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+/* =====================================================================
+   Kobyz3DViewer — Three.js + GLTFLoader
+   ===================================================================== */
+import * as THREE from "three";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+
+class Kobyz3DViewer {
+  static supported() {
+    try { const c = document.createElement("canvas"); return !!(window.WebGLRenderingContext && (c.getContext("webgl2") || c.getContext("webgl"))); }
+    catch { return false; }
+  }
+  /* Файлды fetch арқылы оқып, жадта GLB-ге жинайды.
+     .glb болса — тікелей; glTF JSON болса — data: URI буферін декодтап, GLB BIN бөлігіне салады
+     (кейбір хостингтер data: URI жүктеуге тыйым салады). */
+  static async fetchAsGLB(url, onProgress) {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const total = +res.headers.get("content-length") || 0;
+    let bytes;
+    if (res.body && res.body.getReader) {
+      const reader = res.body.getReader(), parts = []; let got = 0;
+      for (;;) {
+        const { done, value } = await reader.read(); if (done) break;
+        parts.push(value); got += value.length;
+        if (onProgress) onProgress(total ? Math.min(.97, got / total) : Math.min(.9, got / 1.3e7));
+      }
+      bytes = new Uint8Array(got); let o = 0; for (const p of parts) { bytes.set(p, o); o += p.length; }
+    } else bytes = new Uint8Array(await res.arrayBuffer());
+    if (bytes[0] === 0x67 && bytes[1] === 0x6C && bytes[2] === 0x54 && bytes[3] === 0x46) return bytes.buffer; // "glTF"
+    const json = JSON.parse(new TextDecoder().decode(bytes));
+    let bin = new Uint8Array(0);
+    const b = json.buffers && json.buffers[0];
+    if (b && b.uri && b.uri.startsWith("data:")) {
+      const s = atob(b.uri.slice(b.uri.indexOf(",") + 1));
+      bin = new Uint8Array(s.length); for (let i = 0; i < s.length; i++) bin[i] = s.charCodeAt(i);
+      delete b.uri;
+    } else if (b && b.uri) {
+      const r2 = await fetch(new URL(b.uri, new URL(url, location.href)).href);
+      bin = new Uint8Array(await r2.arrayBuffer()); delete b.uri;
+    }
+    const enc = new TextEncoder(); let js = enc.encode(JSON.stringify(json));
+    const jsPad = (4 - (js.length % 4)) % 4, binPad = (4 - (bin.length % 4)) % 4;
+    const totalLen = 12 + 8 + js.length + jsPad + (bin.length ? 8 + bin.length + binPad : 0);
+    const out = new Uint8Array(totalLen), dv = new DataView(out.buffer); let o = 0;
+    dv.setUint32(0, 0x46546C67, true); dv.setUint32(4, 2, true); dv.setUint32(8, totalLen, true); o = 12;
+    dv.setUint32(o, js.length + jsPad, true); dv.setUint32(o + 4, 0x4E4F534A, true); o += 8;
+    out.set(js, o); o += js.length; for (let i = 0; i < jsPad; i++) out[o++] = 0x20;
+    if (bin.length) { dv.setUint32(o, bin.length + binPad, true); dv.setUint32(o + 4, 0x004E4942, true); o += 8; out.set(bin, o); }
+    return out.buffer;
+  }
+  constructor(host, opts = {}) {
+    this.host = host; this.opts = opts; this.autoRotate = !opts.reducedMotion; this.running = false; this.mixer = null;
+    this.clock = new THREE.Clock();
+  }
+  async load(url, onProgress) {
+    const low = matchMedia("(max-width: 760px)").matches || (navigator.hardwareConcurrency || 4) <= 4;
+    const r = this.renderer = new THREE.WebGLRenderer({ antialias: !low, alpha: true, powerPreference: "high-performance" });
+    r.setPixelRatio(Math.min(devicePixelRatio || 1, low ? 1.5 : 2));
+    r.outputColorSpace = THREE.SRGBColorSpace;
+    r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = 1.0;
+    r.setClearColor(0x000000, 0);
+    this.host.insertBefore(r.domElement, this.host.firstChild);
+
+    const scene = this.scene = new THREE.Scene();
+    const pmrem = new THREE.PMREMGenerator(r);
+    scene.environment = pmrem.fromScene(new RoomEnvironment(r), 0.04).texture;
+    pmrem.dispose();
+    const key = new THREE.DirectionalLight(0xffe0b5, 2.0); key.position.set(3, 4, 5); scene.add(key);
+    const rim = new THREE.DirectionalLight(0xc9a45b, 2.4); rim.position.set(-4, 2, -4); scene.add(rim);
+    scene.add(new THREE.HemisphereLight(0xf2ebdd, 0x17120f, .4));
+    // витрина үстіндегі жылы прожектор
+    const spot = new THREE.SpotLight(0xffe6c0, 22, 0, .55, .7, 2); spot.position.set(.4, 4.2, 2.2); scene.add(spot); scene.add(spot.target);
+
+    this.camera = new THREE.PerspectiveCamera(30, 1, .01, 200);
+    const c = this.controls = new OrbitControls(this.camera, r.domElement);
+    c.enableDamping = true; c.dampingFactor = .07; c.enablePan = false;
+    c.rotateSpeed = .6; c.zoomSpeed = .7; c.autoRotate = this.autoRotate; c.autoRotateSpeed = this.opts.rotateSpeed || 1.1;
+    if (this.opts.zoom === false) c.enableZoom = false;
+    if (this.opts.polar) { c.minPolarAngle = this.opts.polar[0]; c.maxPolarAngle = this.opts.polar[1]; }
+    if (this.opts.touchAction) r.domElement.style.touchAction = this.opts.touchAction;
+    c.addEventListener("start", () => { this.userTouched = true; });
+
+    const glb = await Kobyz3DViewer.fetchAsGLB(url, onProgress);
+    const base = url.includes("/") ? url.slice(0, url.lastIndexOf("/") + 1) : "";
+    const gltf = await new Promise((res, rej) => new GLTFLoader().parse(glb, base, res, rej));
+    onProgress && onProgress(1);
+    const model = gltf.scene;
+    model.traverse((o) => {
+      if (o.isMesh) {
+        const ms = Array.isArray(o.material) ? o.material : [o.material];
+        ms.forEach((m) => { if ("envMapIntensity" in m) m.envMapIntensity = .65; });
+      }
+    });
+    // бағыт: ең ұзын осьті тігінен қою
+    const orient = new THREE.Group(); orient.add(model);
+    const o = this.opts.orientation || {};
+    let box = new THREE.Box3().setFromObject(orient), size = box.getSize(new THREE.Vector3());
+    if (o.autoUpright !== false) {
+      if (size.x >= size.y && size.x >= size.z) orient.rotation.z = Math.PI / 2;
+      else if (size.z >= size.y && size.z >= size.x) orient.rotation.x = -Math.PI / 2;
+    }
+    if (o.flip) orient.rotation.z += Math.PI;
+    if (o.extraRotationY) orient.rotation.y += o.extraRotationY;
+    orient.updateMatrixWorld(true);
+    box = new THREE.Box3().setFromObject(orient); size = box.getSize(new THREE.Vector3());
+    const center = box.getCenter(new THREE.Vector3());
+    const s = 2 / size.y;
+    const pivot = this.pivot = new THREE.Group();
+    orient.position.sub(center); pivot.add(orient); pivot.scale.setScalar(s);
+    scene.add(pivot);
+    this.size = size.clone().multiplyScalar(s);
+
+    if (gltf.animations && gltf.animations.length) {
+      this.mixer = new THREE.AnimationMixer(model);
+      gltf.animations.forEach((clip) => this.mixer.clipAction(clip).play());
+    }
+
+    this.ro = new ResizeObserver(() => this.resize()); this.ro.observe(this.host);
+    this.resize(true);
+    this.resume();
+  }
+  fitDistance() {
+    const vFov = THREE.MathUtils.degToRad(this.camera.fov);
+    const h = this.size.y, w = Math.max(this.size.x, this.size.z) * 1.15;
+    const dh = (h * .5) / Math.tan(vFov / 2);
+    const dw = (w * .5) / (Math.tan(vFov / 2) * this.camera.aspect);
+    return (Math.max(dh, dw) * 1.22 + Math.max(this.size.x, this.size.z) * .5) * (this.opts.fitScale || 1);
+  }
+  resize(first) {
+    const w = this.host.clientWidth, h = this.host.clientHeight; if (!w || !h) return;
+    this.renderer.setSize(w, h, false);
+    this.camera.aspect = w / h; this.camera.updateProjectionMatrix();
+    const d = this.fitDistance();
+    const hd = this.opts.homeDir || [.38, .12, 1];
+    this.tgt = new THREE.Vector3(...(this.opts.target || [0, 0, 0]));
+    this.home = new THREE.Vector3(hd[0], hd[1], hd[2]).normalize().multiplyScalar(d).add(this.tgt);
+    this.controls.minDistance = d * .35; this.controls.maxDistance = d * 1.8;
+    if (first || !this.placed) { this.camera.position.copy(this.home); this.controls.target.copy(this.tgt); this.controls.update(); this.placed = true; }
+    if (!this.running) this.render();
+  }
+  animateCam(toPos, ms = 900, easing) {
+    const from = this.camera.position.clone(), t0 = performance.now(), tgt0 = this.controls.target.clone();
+    return new Promise((res) => {
+      const step = (now) => {
+        const t = Math.min(1, (now - t0) / ms), e = easing ? easing(t) : (t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+        this.camera.position.lerpVectors(from, toPos, e); this.controls.target.lerpVectors(tgt0, this.tgt || new THREE.Vector3(), e);
+        if (!this.running) this.render();
+        t < 1 ? requestAnimationFrame(step) : res();
+      };
+      requestAnimationFrame(step);
+    });
+  }
+  entrance() {
+    if (!this.home) return Promise.resolve();
+    if (this.opts.reducedMotion) { this.reset(true); return Promise.resolve(); }
+    const rel = this.home.clone().sub(this.tgt), from = rel.multiplyScalar(1.7).add(this.tgt); from.y += this.home.distanceTo(this.tgt) * .45;
+    this.camera.position.copy(from); this.controls.target.copy(this.tgt).add(new THREE.Vector3(0, .25, 0)); this.controls.update();
+    return this.animateCam(this.home, 2200, (t) => 1 - Math.pow(1 - t, 4));
+  }
+  reset(instant) { if (!this.home) return; if (instant) { this.camera.position.copy(this.home); this.controls.target.copy(this.tgt); this.controls.update(); return; } return this.animateCam(this.home, 900); }
+  zoom(k) {
+    const dir = this.camera.position.clone().sub(this.controls.target), d = THREE.MathUtils.clamp(dir.length() * k, this.controls.minDistance, this.controls.maxDistance);
+    return this.animateCam(this.controls.target.clone().add(dir.setLength(d)), 500);
+  }
+  approach() {
+    if (!this.home) return Promise.resolve();
+    const dir = this.camera.position.clone().sub(this.controls.target);
+    return this.animateCam(dir.setLength(this.home.distanceTo(this.tgt) * .62).add(this.controls.target), 850);
+  }
+  setAutoRotate(on) { this.autoRotate = on; this.controls.autoRotate = on; }
+  render() { this.renderer && this.renderer.render(this.scene, this.camera); }
+  loop = () => {
+    if (!this.running) return;
+    const dt = Math.min(this.clock.getDelta(), .05);
+    this.controls.update(dt);
+    this.mixer && this.mixer.update(dt);
+    this.render();
+    this.raf = requestAnimationFrame(this.loop);
+  };
+  resume() { if (this.running || !this.renderer) return; this.running = true; this.clock.getDelta(); this.raf = requestAnimationFrame(this.loop); }
+  pause() { this.running = false; cancelAnimationFrame(this.raf); }
+  dispose() { this.pause(); this.ro && this.ro.disconnect(); if (this.renderer) { this.renderer.dispose(); this.renderer.domElement.remove(); } }
+}
+window.Kobyz3DViewer = Kobyz3DViewer;
+window.dispatchEvent(new Event("kobyz3d:ready"));
+</script>
+
+</body>
+</html>
